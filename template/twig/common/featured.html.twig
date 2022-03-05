@@ -1,0 +1,32 @@
+{% if featured is not empty %}
+    {% embed get_template('../common/background_media', _self) with {
+        attachment: featured.background,
+        container_class: 'featured-category my-30 h-500px bg-overlay dark-80'
+    } %}
+        {% block body %}
+            <div class="container h-100 d-flex justify-content-center flex-column">
+                <div class="row justify-content-center">
+                    <div class="order-2 col-12 col-lg-6 col-xl-4 d-flex justify-content-center flex-column">
+                        <h2 class="mb-4 text-center text-white">{{ featured.title|raw }}</h2>
+                        <div class="text-white text-center fs-lg">{{ featured.text|raw }}</div>
+                        <div class="text-center mt-6">
+                            {% include get_template('call_to_action', _self) with {
+                                text: featured.button,
+                                permalink: featured.permalink
+                            } %}
+                        </div>
+                    </div>
+                    <div class="order-{{ image_order|default(3) }} col-12 col-lg-6 col-xl-4 d-none d-lg-block">
+                        {% include get_template('../common/block_media', _self) with {
+                            image_size: 'medium_large',
+                            image_attrs: {class: 'mx-w380px position-relative'},
+                            video_attrs: {class: 'img-fluid pl-0 pl-lg-3'},
+                            attachment: featured.image,
+                        } %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endif %}
+

@@ -1,0 +1,34 @@
+{% if customizer_option('top_header') %}
+    <div class="header-top fs-3x py-3 lh-1x border-bottom">
+        <div class="container">
+            <div class="d-flex">
+                <div class="row w-100">
+                    <div class="col-6 align-items-center my-auto d-none d-lg-block">
+                        {% if customizer_option('top_header_left_text') %}
+                            <div class="header-info header-info-left lh-md">
+                                {{ customizer_option('top_header_left_text')|raw }}
+                            </div>
+                        {% elseif has_nav_menu('top-left-menu') %}
+                            <div class="header-info">
+                                {{ wp_nav_menu({
+                                    theme_location: 'top-left-menu',
+                                    container_class: 'inline-list pipe-separated'
+                                }) }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if customizer_option('top_header_right_text') %}
+                        <div class="col-12 col-lg-6 my-auto d-flex justify-content-lg-end">
+                            <div class="header-info header-info-left lh-md">
+                                {{ customizer_option('top_header_right_text')|raw }}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <a href="#" class="link ml-3 my-auto">
+                    {{ get_icon('flag/usa-flag-color', {class: 'svg-icon icon-lg'})|raw }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endif %}

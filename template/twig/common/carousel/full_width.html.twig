@@ -1,0 +1,22 @@
+{% extends get_template('carousel', _self) %}
+
+{% set arrow_class = 'position-absolute' %}
+{% set arrows_class = 'centered-absolute w-100 show-element d-none d-md-block' %}
+{% set carousel_class = 'full-width' %}
+{% set container_class = 'h-540px mx-md-h350px overflow-hidden' %}
+{% set carousel_config = {slidesToShow: 1,slidesToScroll: 1,fade: true,loop: true,dots: true,arrows: true,autoplay: true} %}
+
+    {% embed get_template('../background_media', _self) with {
+        image_url: wp_get_attachment_image_url(carousel.image_id),
+        container_class: 'carousel-item-wrapper h-540px mx-md-h350px',
+    } %}
+        {% block body %}
+            <div class="carousel-item-content text-center centered-absolute t-n50 left-50">
+                <h1 class="display-2 mb-11">{{ carousel.text|raw }}</h1>
+                {% if carousel.subtext|raw %}
+                    <p class="mb-5 fs-xl lh-1x">{{ carousel.subtext|raw }}</p>
+                {% endif %}
+            </div>
+        {% endblock %}
+    {% endembed %}
+

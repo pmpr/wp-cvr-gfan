@@ -1,0 +1,42 @@
+{% extends get_template('sidebarable', _self) %}
+
+{% block before_container %}
+    {{ parent() }}
+    {% include get_template('common/page_header', _self) %}
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+    {{ dynamic_sidebar('search-sidebar') }}
+{% endblock %}
+
+{% block content %}
+    {% set posts = have_posts() %}
+
+    {% if posts %}
+        {% for post in posts %}
+            {% if get_post_type(post) is same as('product') %}
+
+                {% include get_template('common/article/product', _self) with {
+                    post: post
+                } %}
+            {% else %}
+
+                {% include get_template('common/article/post', _self) with {
+                    post: post
+                } %}
+            {% endif %}
+        {% endfor %}
+    {% else %}
+
+        {% include get_template('common/empty', _self) %}
+    {% endif %}
+{% endblock %}
+
+{% block after_row %}
+    {{ parent() }}
+    {% include get_template('common/pagination', _self) with {
+        pagination_type: 'post'
+    } %}
+{% endblock %}
+

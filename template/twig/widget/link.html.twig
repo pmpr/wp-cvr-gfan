@@ -1,0 +1,10 @@
+<ul class="list-unstyled fs-md mb-md-5 mb-lg-5">
+    {% for item in items %}
+        <li class="{% if not loop.last %} mb-4{% endif %}">
+            <a href="{{ get_permalink(item)|esc_attr }}" class="d-block hover-move right text-hover-primary">
+                {{ get_title(item)|raw }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+

@@ -1,0 +1,21 @@
+{% extends get_template('../card', _self) %}
+{% block body %}
+    <ul class="list-unstyled mb-0">
+        {% for item in items %}
+            <li class="lh-xxl align-items-center{% if not loop.last %} mb-4{% endif %}">
+                <a href="{{ get_category_link(item)|raw }}" rel="nofollow"
+                   class="d-flex justify-content-between rounded-sm border text-gray-800 fs-4x lh-xl py-3 px-4 border-hover-light-primary text-hover-primary">
+                    <div class="d-flex">
+                        {% if item.meta.thumbnail_id %}
+                            {{ wp_get_attachment_image(item.meta.thumbnail_id, 'tiny')|raw }}
+                        {% endif %}
+                        <h4 class="h6 ml-3 my-auto">{{ item.name|raw }}</h4>
+                    </div>
+                    {% if show_count %}
+                        <span class="d-inline-block fs-2x bg-light-primary text-dark square-size-xs rounded-20x ml-1 text-center lh-xl my-auto">{{ item.count|short_number|number|raw }}</span>
+                    {% endif %}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

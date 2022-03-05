@@ -1,0 +1,49 @@
+{% if main_images and thumbnails %}
+
+    {% embed get_template('../../common/carousel/carousel', _self) with {
+        carousel_config: {
+            fade: false,
+            arrows: false,
+            asNavFor: '.nav-thumbnail-slider',
+            slidesToShow: 1,
+            slidesToScroll: 1,
+        },
+        carousels: main_images,
+        carousel_class: 'main-image-slider rounded-xxl border overflow-hidden'
+    } %}
+
+        {% block carousel %}
+            {{ carousel|raw }}
+        {% endblock %}
+    {% endembed %}
+
+    <div class="carousel-container mt-5">
+
+        {% set slidesToShow = 4 %}
+        {% set arrows = thumbnails|length > slidesToShow %}
+        {% embed get_template('../../common/carousel/carousel', _self) with {
+            carousel_config: {
+                dots: false,
+                arrows: arrows,
+                asNavFor: '.main-image-slider',
+                slidesToShow: slidesToShow,
+                slidesToScroll: 1,
+                focusOnSelect: true,
+            },
+            carousels: thumbnails,
+            arrow_icon: 'arrow',
+            arrow_class: 'position-absolute',
+            arrows_class: 'position-absolute top-30 w-100 show-element',
+            carousel_class: 'nav-thumbnail-slider',
+            next_class: 'right-0',
+            prev_class: 'left-0',
+        } %}
+
+            {% block carousel %}
+                {{ carousel|raw }}
+            {% endblock %}
+        {% endembed %}
+
+    </div>
+
+{% endif %}

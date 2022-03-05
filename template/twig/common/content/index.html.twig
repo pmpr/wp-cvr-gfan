@@ -1,0 +1,6 @@
+{{ dynamic_sidebar('before-single-content') }}
+<div class="{{ post_type|default('')|esc_attr }}-content {{ class|raw }}">
+    {{ the_content()|raw }}
+</div>
+{{ dynamic_sidebar('after-single-contenet') }}
+

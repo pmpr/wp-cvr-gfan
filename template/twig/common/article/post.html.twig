@@ -1,0 +1,33 @@
+{% set id = get_id(post) %}
+{% set permalink = get_permalink(id) %}
+
+<article {{ add_animation({class: 'post-item mb-8 rounded-xxl border overflow-hidden', delay: 0, effect: 'fadeIn'}) }}>
+    <div class="row no-gutters">
+        <div class="col-12 col-lg-5 mn-h366px post-thumb center-cover"
+             style="background-image: url({{ get_the_post_thumbnail_url(id, 'medium') }})"></div>
+        <div class="col-12 col-lg-7 post-data px-9 py-6 my-auto">
+            {{ do_action('post_archive_loop_before_title'|generate_hook, post) }}
+            <h3 class="mb-5">
+                <a class="text-hover-primary max-line max-line-2"
+                   href="{{ permalink|raw }}">{{ get_title(id)|raw }}</a>
+            </h3>
+            <div class="mb-8 no-margin lh-lg max-line max-line-4">
+                {{ get_the_excerpt(post)|raw }}
+            </div>
+            <div class="d-flex justify-content-between flex-column flex-sm-row flex-lg-row flex-xxl-row">
+                <div class="d-flex fs-3x mb-3 mb-md-0 mb-lg-3 mb-xxl-0">
+                    {{ do_action('metadata_render'|generate_hook, {
+                        post: post,
+                        include: ['publish', 'study_time'],
+                    }) }}
+                </div>
+                <a href="{{ permalink|raw }}"
+                   class="d-flex text-primary heading-ff h6 justify-content-end hover-move up">
+                    {{ __('Read more', domain)|raw }}
+                    {{ get_icon('fontawesome/arrow-right', {class: 'svg-icon icon-sm ml-1 icon-primary my-auto'})|raw }}
+                </a>
+            </div>
+        </div>
+    </div>
+</article>
+

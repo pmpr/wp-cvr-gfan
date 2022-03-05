@@ -1,0 +1,37 @@
+{% extends get_template('../sidebarable', _self) %}
+
+{% block before_container %}
+    {{ parent() }}
+    {% include get_template('page_header', _self) %}
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+    {{ dynamic_sidebar('archive-sidebar') }}
+    {{ dynamic_sidebar('post-archive-sidebar') }}
+{% endblock %}
+
+{% block content %}
+    {% set posts = have_posts() %}
+
+    {% if posts %}
+
+        {% for index, post in posts %}
+
+            {% include get_template('article/post', _self) with {
+                post: post
+            } %}
+        {% endfor %}
+    {% else %}
+
+        {% include get_template('empty', _self) %}
+    {% endif %}
+{% endblock %}
+
+{% block after_row %}
+    {{ parent() }}
+    {% include get_template('pagination', _self) with {
+        pagination_type: 'post'
+    } %}
+{% endblock %}
+

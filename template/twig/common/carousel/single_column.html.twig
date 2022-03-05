@@ -1,0 +1,11 @@
+{% set carousel_config = {
+    dots: true,
+    speed: 1000,
+    autoplay: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    adaptiveHeight: true,
+} %}
+{% extends get_template('carousel', _self) %}
+

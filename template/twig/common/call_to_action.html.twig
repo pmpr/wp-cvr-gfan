@@ -1,0 +1,14 @@
+{% set size = size|default('lg') %}
+{% set attrs = attrs|default({}) %}
+{% set attrs = attrs|add('class', 'btn btn-' ~ size ~ ' call-to-action px-6 py-3' ~ (media_hover|default(1) ? ' media-hover-move ' ~ (icon_left ? 'left' : 'right'): '')) %}
+{% if permalink %}
+    {% set attrs = attrs|add('href', permalink) %}
+{% endif %}
+
+<a {% if attrs|default({}) is not empty %} {{ attrs|parse_attrs|raw }}{% endif %}>
+    <span class="d-flex justify-content-center{% if icon_left %} flex-row-reverse{% endif %}">
+        <span class="m{% if icon_left %}l{% else %}r{% endif %}-3 font-weight-bold heading-ff call-to-action-text">{{ text|raw }}</span>
+        {{ get_icon(icon|default('fontawesome/arrow-right'), {class: 'my-auto svg-icon icon-white'})|raw }}
+    </span>
+</a>
+

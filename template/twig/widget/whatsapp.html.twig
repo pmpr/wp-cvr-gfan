@@ -1,0 +1,9 @@
+{% set phone = apply_filters('get_contact_information_by_key'|generate_hook, {}, phone) %}
+{% if phone %}
+    <div class="hotline d-flex justify-content-start">
+        {% include get_template('../common/whatsapp', _self) with {
+            phone: phone,
+            show_subtext: 1,
+        } %}
+    </div>
+{% endif %}

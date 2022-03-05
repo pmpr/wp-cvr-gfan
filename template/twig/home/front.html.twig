@@ -1,0 +1,226 @@
+{% extends get_template('./base', _self) %}
+
+{% block body %}
+    {% set slides = get_theme_option('home_top_slider', {}) %}
+    {% if slides %}
+        <section class="home-slider mb-8 carousel-container">
+            {% embed get_template('../common/carousel/carousel', _self) with {
+                carousels: slides,
+                arrow_class: 'position-absolute',
+                arrows_class: 'centered-absolute w-100 show-element d-none d-md-block',
+                carousel_class: 'full-width',
+                container_class: 'h-540px mx-md-h350px overflow-hidden',
+                carousel_config: {
+                    fade: true,
+                    loop: true,
+                    dots: true,
+                    arrows: true,
+                    autoplay: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+
+            } %}
+                {% block carousel %}
+                    {% embed get_template('../common/background_media', _self) with {
+                        image_url: wp_get_attachment_image_url(carousel.image_id),
+                        container_class: 'carousel-item-wrapper h-540px mx-md-h350px',
+                    } %}
+                        {% block body %}
+                            <div class="carousel-item-content text-center centered-absolute t-n50 left-50">
+                                <h1 class="display-2 mb-11">{{ carousel.text|raw }}</h1>
+                                {% if carousel.subtext|raw %}
+                                    <p class="mb-5 fs-xl lh-1x">{{ carousel.subtext|raw }}</p>
+                                {% endif %}
+                                {% if carousel.action_text %}
+                                    {% include get_template('../common/call_to_action', _self) with {
+                                        text: carousel.action_text,
+                                        permalink: carousel.action_permalink,
+                                    } %}
+                                {% endif %}
+                            </div>
+                        {% endblock %}
+                    {% endembed %}
+                {% endblock %}
+            {% endembed %}
+        </section>
+    {% endif %}
+
+    {% set categories = get_theme_option('home_slider_cats', {}) %}
+    {% if categories %}
+        <section class="product-categories position-relative py-8 carousel-container">
+            <div class="container">
+                <div class="section-title mb-8 d-flex justify-content-between position-relative">
+                    <h2 class="h3">{{ get_theme_option('home_slider_cats_title', '')|raw }}</h2>
+                    {% include get_template('../common/carousel/arrows', _self) with {
+                        icon: 'arrow',
+                        class: 'd-flex',
+                        btn_class: 'mr-3'
+                    } %}
+                </div>
+                {% embed get_template('../common/carousel/six_column', _self) with {
+                    carousels: categories,
+                    carousel_class: 'mx-n3'
+                } %}
+                    {% block carousel %}
+                        <div {{ add_animation({class: 'px-3 mb-5 position-relative', delay: loop.index * 0.1}) }}>
+                            <a href="{{ carousel.permalink }}"
+                               class="bg-hover-white d-flex flex-column bg-gray-100 rounded-xl px-4 py-6 border border-white border-hover-light-primary">
+                                <figure class="img-hover-scale overflow-hidden mx-auto mr-4">
+                                    {{ wp_get_attachment_image(carousel.image, 'mini')|raw }}
+                                </figure>
+                                <h3 class="h6 mx-auto">{{ carousel.title|raw }}</h3>
+                            </a>
+                        </div>
+                    {% endblock %}
+                    {% block carousel_arrow %}{% endblock %}
+                {% endembed %}
+            </div>
+        </section>
+    {% endif %}
+
+    {% set catalog = get_theme_option('catalog', {}) %}
+    {% if catalog %}
+        <section class="catalog py-8">
+            <div class="container">
+                <div {{ add_animation({class: 'position-relative'}) }}>
+                    {% embed get_template('../common/background_media', _self) with {
+                        attachment: catalog.background,
+                        container_class: 'card rounded-20x border-0 overflow-hidden'
+                    } %}
+                        {% block body %}
+                            <div class="card-body p-8 p-md-20">
+                                <div class="row">
+                                    <div class="col-12 col-lg-6">
+                                        {% include get_template('../common/block_media', _self) with {
+                                            image_size: 'thumbnail',
+                                            image_attrs: {class: 'mx-auto mx-lg-auto mb-7 mb-lg-0 d-block'},
+                                            video_attrs: {class: 'img-fluid pr-0 pr-lg-6'},
+                                            attachment: catalog.image,
+                                        } %}
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        {{ render_if_has_content('h2', {class: 'mb-5 fs-sm-20x'}, catalog.title) }}
+                                        {{ render_if_has_content('p', {class: 'mb-11 fs-8x'}, catalog.subtext) }}
+
+                                        <div class="d-flex flex-column flex-md-row">
+
+                                            {% for button in catalog.buttons %}
+                                                {% include get_template('../common/call_to_action', _self) with {
+                                                    icon_left: 1,
+                                                    media_hover: 0,
+                                                    icon: button.icon,
+                                                    text: button.text,
+                                                    attrs: button.attrs,
+                                                    permalink: button.permalink,
+                                                } %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endblock %}
+                    {% endembed %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% set products = get_theme_option('home_products', {}) %}
+    {% if products %}
+        <section class="products pt-8 carousel-container">
+            <div class="container">
+                <div class="section-title mb-8 d-flex justify-content-between position-relative">
+                    <h2 class="h3">{{ products.title|raw }}</h2>
+                    {% include get_template('../common/carousel/arrows', _self) with {
+                        icon: 'arrow',
+                        class: 'd-flex',
+                        btn_class: 'mr-3'
+                    } %}
+                </div>
+                {% embed get_template('../common/carousel/four_column', _self) with {
+                    carousels: products.items,
+                    carousel_class: 'mx-n3 same-height'
+                } %}
+                    {% block carousel %}
+                        <div {{ add_animation({class: 'position-relative', delay: 0.2, effect: 'fadeIn'}) }}>
+                            <div class="mx-3 mb-4">
+                                {% include get_template("../common/article/product", _self) with {
+                                    product: carousel
+                                } %}
+                            </div>
+                        </div>
+                    {% endblock %}
+                    {% block carousel_arrow %}{% endblock %}
+                {% endembed %}
+            </div>
+        </section>
+    {% endif %}
+
+    {% include get_template('../common/featured', _self) with {
+        featured: get_theme_option('featured_product', {}),
+        image_order: 3
+    } %}
+
+    {% set about = get_theme_option('about', {}) %}
+    {% if about %}
+        <section class="about py-8">
+            <div class="container">
+                <div {{ add_animation({class: 'row justify-content-center'}) }}>
+                    <div class="order-1 col-12 col-lg-6 col-xl-5 mb-6 mb-lg-0 d-flex justify-content-center flex-column">
+                        <h2 class="mb-4 text-center">{{ about.title|raw }}</h2>
+                        <div class="text-center fs-lg">{{ about.text|raw }}</div>
+                        <div class="text-center mt-7">
+                            {% include get_template('../common/call_to_action', _self) with {
+                                text: about.button,
+                                permalink: about.permalink
+                            } %}
+                        </div>
+                    </div>
+                    <div class="order-0 col-12 col-lg-6 col-xl-5 mb-6 mb-lg-0">
+                        {% include get_template('../common/block_media', _self) with {
+                            image_size: 'medium_large',
+                            video_attrs: {class: 'img-fluid pr-0 pr-lg-6'},
+                            attachment: about.image,
+                        } %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+
+    {% include get_template('../common/featured', _self) with {
+        featured: get_theme_option('featured_category', {}),
+        image_order: 3
+    } %}
+
+    {% set comments = get_theme_option('home_comments', {}) %}
+    {% if comments %}
+        <section class="comments py-8 carousel-container">
+            <div class="container">
+                <div {{ add_animation({class: 'row justify-content-center'}) }}>
+                    <div class="col-12 col-lg-10 col-xl-8">
+                        <h2 class="h3 text-center">{{ comments.title|raw }}</h2>
+                        {% embed get_template('../common/carousel/single_column', _self) with {
+                            carousels: comments.items,
+                            arrow_class: 'position-absolute',
+                            arrows_class: 'centered-absolute w-100 d-none d-lg-block',
+                            carousel_class: 'my-5'
+                        } %}
+                            {% block carousel %}
+                                <div class="text-center py-5">
+                                    <div class="px-0 px-lg-20">
+                                        <p class="text-normal fs-lg mb-5">{{ carousel.text|raw }}</p>
+                                        <div class="text-primary h4">- {{ carousel.user|raw }} -</div>
+                                    </div>
+                                </div>
+                            {% endblock %}
+                        {% endembed %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}
+

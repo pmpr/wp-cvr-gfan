@@ -1,0 +1,18 @@
+<ul class="list-unstyled fs-x5 contact-info mb-5">
+    {% for key, item in items %}
+        {% if single_show %}
+            <div class="mb-4">
+                {% include get_template('../../../common/information', _self) with {info: item, is_phone: 0} %}
+            </div>
+        {% else %}
+            <li class="text-dark d-flex{% if not loop.last %} mb-3{% endif %}">
+                {{ get_icon(item.icon, {class: 'svg-icon icon-primary mr-2 icon-' ~ icon_size})|raw }}
+                <div class="w-100 d-flex justify-content-between">
+                    <span class="pr-2">{{ item.title|raw }}:</span>
+                    <strong class="text-justify">{{ item.value|raw }}</strong>
+                </div>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+

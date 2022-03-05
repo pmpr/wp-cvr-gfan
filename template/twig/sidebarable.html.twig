@@ -1,0 +1,18 @@
+{% extends get_template('base', _self) %}
+
+{% block body %}
+    {% block before_container %}{% endblock %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mb-5 mb-lg-0 pr-xl-8">
+                {% block content %}{% endblock %}
+            </div>
+            <div class="col-xl-3 sticky-sidebar">
+                {% block sidebar %}{% endblock %}
+            </div>
+            {% block after_columns %}{% endblock %}
+        </div>
+        {% block after_row %}{% endblock %}
+    </div>
+    {% block after_container %}{% endblock %}
+{% endblock %}

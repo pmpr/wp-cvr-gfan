@@ -1,0 +1,21 @@
+{% set items = customizer_option('category_browser_items') %}
+{% if items and customizer_option('category_browser') %}
+    <div class="category-browser-wrap d-none dropdown d-lg-block my-auto mr-7 rotate-on-show">
+        <a href="#" class="btn btn-primary btn-md font-weight-bold fs-md heading-ff dropdown-toggle d-flex"
+           id="category_browser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {% set icon = customizer_option('category_browser_icon') %}
+            {% if icon %}
+                {{ get_icon(icon, {class: 'mr-2 svg-icon icon-1x icon-white my-auto'})|raw }}
+            {% endif %}
+            <span>{{ customizer_option('category_browser_text')|raw }}</span>
+            {{ get_icon('fontawesome/angle-down', {class: 'ml-2 svg-icon icon-1x icon-white my-auto rotate-180'})|raw }}
+        </a>
+        <div class="category-browser dropdown-menu mt-8 mn-w470px p-9 border-light-primary animated-on-show rounded-block"
+             aria-labelledby="category_browser">
+            <div class="row">
+                {{ do_action('category_browser'|generate_hook, items) }}
+            </div>
+        </div>
+    </div>
+{% endif %}
+

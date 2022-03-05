@@ -1,0 +1,51 @@
+<div class="dropdown-menu animated-on-show right-0 rounded-lg mt-10 left-auto custom-dropdown border-0 py-0">
+    <form>
+        {{ get_spinner({})|raw }}
+        <div class="card rounded-block">
+            <div id="cart_content_list_holder"
+                 class="card-body bg-transparent px-5 py-7 no-margin">
+                {{ the_widget(widget, 'title=')|raw }}
+            </div>
+            <script>
+                function refreshFragment($selector, $content) {
+                    let $el = document.querySelector($selector);
+                    if ($el) {
+
+                        $el.innerHTML = $content;
+                    }
+                }
+
+                if (document.readyState === 'loading' || document.readyState) {
+
+                    let event = 'DOMContentLoaded',
+                        $callback = () => {
+                            PMPRInlineUtil.ajaxRequest({
+                                action: '{{ get_count_ajax_action|esc_attr }}'
+                            }, (response) => {
+                                let $fragments = response.fragments;
+                                if (typeof $fragments === "object") {
+                                    if (Array.isArray($fragments)) {
+
+
+                                    } else {
+                                        for (const [selector, content] of Object.entries($fragments)) {
+
+                                            refreshFragment(selector, content);
+                                        }
+                                    }
+                                }
+                            });
+                        };
+                    if (window.addEventListener) {
+
+                        window.addEventListener(event, $callback)
+                    } else {
+
+                        window.attachEvent('on' + event, $callback)
+                    }
+                }
+            </script>
+        </div>
+    </form>
+</div>
+

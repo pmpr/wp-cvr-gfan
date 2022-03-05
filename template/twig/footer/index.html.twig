@@ -1,0 +1,16 @@
+{% set footer_attrs = apply_filters('footer_attrs'|generate_hook, {class: 'main'}) %}
+<footer {{ footer_attrs|parse_attrs|raw }}>
+    {% include get_template('features', _self) %}
+
+    {% include get_template('middle', _self) %}
+
+    {% include get_template('bottom', _self) %}
+    {{ do_action('gfan_footer_end'|generate_hook) }}
+</footer>
+
+{% include get_template('preloader', _self) %}
+
+{{ wp_footer() }}
+
+</body>
+</html>

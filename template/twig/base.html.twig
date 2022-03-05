@@ -1,0 +1,12 @@
+{% block header %}
+    {{ do_action('render_header'|generate_hook) }}
+{% endblock %}
+
+<main class="main d-block">
+    {% block body %}{% endblock %}
+</main>
+
+{% block footer %}
+    {{ do_action('render_footer'|generate_hook) }}
+{% endblock %}
+

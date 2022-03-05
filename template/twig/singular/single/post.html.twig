@@ -1,0 +1,59 @@
+{% extends get_template('../../sidebarable', _self) %}
+
+{% block sidebar %}
+    {{ parent() }}
+    <div class="my-8">
+        {{ dynamic_sidebar('single-sidebar') }}
+        {{ dynamic_sidebar('post-single-sidebar') }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <header class="single-header my-8">
+        <div class="row">
+            <div class="col-xl-10 col-lg-12 m-auto">
+                {% set category = get_term(post, 'category', 1) %}
+                {% if category %}
+                    <div class="h6 mb-3">
+                        <a href="{{ get_term_link(category)|raw }}"
+                           class="text-primary-secondary">{{ category.name|raw }}</a>
+                    </div>
+                {% endif %}
+                <h1 class="mb-3">{{ the_title()|raw }}</h1>
+                <div class="d-flex fs-3x lh-xl">
+                    {{ do_action('metadata_render'|generate_hook, {
+                        post: post,
+                        include: ['author', 'publish', 'study_time'],
+                    }) }}
+                </div>
+            </div>
+        </div>
+    </header>
+    <figure class="mb-8">
+        {{ get_the_post_thumbnail(item, 'large', {class: 'rounded-xxl'})|raw }}
+    </figure>
+    <div class="row">
+        <div class="col-xl-10 col-lg-12 m-auto">
+            {% if has_excerpt(post) %}
+                <div class="fs-xl single-excerpt mb-8 text-dark text-justify">{{ get_the_excerpt(post)|raw }}</div>
+            {% endif %}
+            {% include get_template('../../common/have_posts', _self) %}
+            {% set tags = get_term(post, 'post_tag', 0) %}
+            <div class="mt-10 pt-7 mb-8 tags border-top">
+                {% for tag in tags %}
+                    <a href="{{ get_term_link(tag)|raw }}" rel="tag"
+                       class="mr-2 px-4 py-3 bg-primary-secondary font-weight-bold rounded text-white text-hover-dark text-hover-white fs-3x heading-ff border-hover-secondary hover-move up d-inline-block">{{ tag.name|raw }}</a>
+                {% endfor %}
+            </div>
+            <div class="mb-5 mt-11">
+                <div class="row">
+                    <div class="col-lg-9">
+                        {{ comments_template()|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

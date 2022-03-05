@@ -1,0 +1,6 @@
+{% set pagination = apply_filters(('get_' ~ pagination_type|default('post') ~ '_pagination')|generate_hook, '') %}
+{% if pagination is not empty %}
+    <nav{% if pagination_label %} aria-label="{{ pagination_label|esc_attr }}"{% endif %}>
+        {{ pagination|raw }}
+    </nav>
+{% endif %}

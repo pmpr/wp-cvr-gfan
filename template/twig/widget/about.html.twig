@@ -1,0 +1,13 @@
+<div class="fs-md mb-5">
+    {% if show_logo %}
+        {% include get_template('../common/logo', _self) with {
+            width: logo_width,
+            height: logo_height,
+            option_key: 'desktop_logo'
+        } %}
+    {% endif %}
+    {% if text %}
+        <p class="fs-7x text-dark mt-4">{{ text|raw }}</p>
+    {% endif %}
+</div>
+

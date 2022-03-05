@@ -1,0 +1,40 @@
+<section>
+    <div {{ add_animation({class: 'container pb-9'}) }}>
+        <div class="row align-items-center">
+            <div class="col-12 mb-9">
+                <div class="border-top border-light-primary"></div>
+            </div>
+            <div class="col-md-6 col-xl-4 mb-5 mb-md-0">
+                <div class="fs-4x text-center text-md-left">
+                    {% include get_template('../common/copyright', _self) with {separator: '<br/>'} %}
+                </div>
+            </div>
+            <div class="col-lg-6 col-xl-4 text-center d-none d-xl-flex">
+                {% set phones = customizer_option('footer_contact_us') %}
+                {% if phones %}
+                    {% set phones = apply_filters('get_contact_information'|generate_hook, {}, {include: phones, output: ''}) %}
+                    {% for phone in phones %}
+                        <div class="d-inline-flex mx-auto mb-4 mb-xxl-0{% if not loop.last %} mr-xxl-6{% endif %}">
+                            {% include get_template('../common/information', _self) with {info: phone, icon_color: 'gray'} %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="col-md-6 col-xl-4 text-center text-md-right">
+                {% set text = customizer_option('footer_social_text') %}
+                {% set socials = customizer_option('footer_social_items') %}
+                {% if text and socials %}
+                    {% set socials = apply_filters('get_social_items'|generate_hook, {}, {include: socials, output: ''}) %}
+                    <div class="d-flex justify-content-center justify-content-md-end">
+                        {% include get_template('../common/social', _self) with {text: text, socials: socials} %}
+                    </div>
+                    {% set social_subtext = customizer_option('footer_social_subtext') %}
+                    {% if social_subtext %}
+                        <p class="fs-4x">{{ social_subtext|raw }}</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+

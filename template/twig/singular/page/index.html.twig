@@ -1,0 +1,36 @@
+{% extends get_template('base', _self) %}
+
+{% block body %}
+    {% set is_centered = apply_filters('page_content_is_centered', 1, post, post_type) %}
+    {% set has_container = apply_filters('page_content_has_container', 1, post, post_type) %}
+    {% set has_jumbotron = apply_filters('page_content_has_jumbotron', 1, post, post_type) %}
+    {% if has_jumbotron %}
+        {% include get_template('../../common/page_header', _self) with {
+            jumbotron: render_post_data('title', post),
+        } %}
+    {% endif %}
+    {% if has_container %}
+        <div class="container">
+    {% endif %}
+    {% set content = include(get_template('../../common/have_posts', _self)) %}
+    {% set content = apply_filters('page_content_filter', content, post, post_type) %}
+    {% if is_centered %}
+    <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+        <figure class="mb-8">
+            {{ get_the_post_thumbnail(item, 'large', {class: 'rounded-xxl'})|raw }}
+        </figure>
+    </div>
+
+    <div class="col-12 col-lg-8 col-xl-7 single-content text-justify">
+    {% endif %}
+    {{ content|raw }}
+    {{ do_action('single_after_content', post) }}
+    {% if is_centered %}
+    </div>
+    </div>
+    {% endif %}
+    {% if has_container %}
+        </div>
+    {% endif %}
+{% endblock %}

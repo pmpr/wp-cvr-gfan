@@ -1,0 +1,25 @@
+{% if customizer_option('middle_header') %}
+    <div class="header-middle py-5 d-none d-lg-block">
+        <div class="container">
+            <div class="d-flex">
+                {% if customizer_option('logo') %}
+                    <div class="logo mr-12">
+                        {% include get_template('../common/logo', _self) with {
+                            option_key: 'desktop_logo'
+                        } %}
+                    </div>
+                {% endif %}
+                <div class="d-flex justify-content-between align-items-center header-right w-100">
+                    {% if customizer_option('middle_header') %}
+                        <div class="border-2 border-light-primary w-100 mx-w560px rounded bg-white">
+                            {{ get_search_form({
+                                target: 'header',
+                            })|raw }}
+                        </div>
+                    {% endif %}
+                    {{ do_action('gfan_header_middle_right') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

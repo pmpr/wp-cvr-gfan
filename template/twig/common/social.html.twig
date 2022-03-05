@@ -1,0 +1,11 @@
+{% if text %}
+    <h6 class="my-auto mr-1 text-dark">{{ text|raw }}</h6>
+{% endif %}
+{% if socials %}
+    {% for social in socials %}
+        <a href="{{ social.url|raw }}" class="ml-2" rel="noopener noreferrer nofollow">
+            {{ get_icon(social.icon, {class: 'svg-icon icon-' ~ icon_size|default('lg') ~ ' icon-primary media-hover-move up'})|raw }}
+        </a>
+    {% endfor %}
+{% endif %}
+

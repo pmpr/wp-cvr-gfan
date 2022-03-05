@@ -1,0 +1,21 @@
+{% extends get_template('../card', _self) %}
+{% block body %}
+    {% for item in items %}
+        <div class="position-relative d-flex{% if not loop.last %} mb-4 pb-4 border-bottom{% endif %}">
+            {{ get_the_post_thumbnail(item, 'mini', {class: 'rounded'})|raw }}
+            <div class="ml-3">
+                <h4 class="h5">
+                    <a href="{{ get_permalink(item)|esc_attr }}" class="text-primary-secondary max-line max-line-1">
+                        {{ get_title(item)|raw }}
+                    </a>
+                </h4>
+                {% set metadata = metadata|default((is_archive() ? ['publish', 'category'] : ['publish'])) %}
+                {{ do_action('metadata_render'|generate_hook, {
+                    post: item,
+                    include: metadata,
+                    item_class: 'fs-sm'
+                }) }}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

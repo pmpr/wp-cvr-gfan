@@ -1,0 +1,23 @@
+{
+  "name": "pmpr-thm/wp-thm-gfan",
+  "type": "project",
+  "license": "proprietary",
+  "description": "GFAN Theme for Wordpress",
+  "keywords": [
+    "wordpress",
+    "theme",
+    "pmpr",
+    "gfan"
+  ],
+  "require": {
+    "php": ">=7.4",
+    "pmpr-cmn/wp-cmn-theme": "dev-main"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pmpr\\Theme\\Gfan\\": "src/Pmpr/Theme/Gfan"
+    }
+  },
+  "minimum-stability": "dev"
+}
+

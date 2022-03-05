@@ -1,0 +1,22 @@
+<section class="py-6">
+    <div class="container pb-5 pt-8">
+        <div class="row">
+            {% set segments = 4 %}
+            {% for i in 1..segments %}
+                {% if is_active_sidebar('footer-' ~ i) %}
+                    {% set attrs = {class: 'col-12 col-sm-6 col-xl-3', delay: 0.1 * i} %}
+                    {% if i > 1 and i < 4 %}
+                        {% set attrs = attrs|add('class', 'px-xl-8') %}
+                    {% endif %}
+                    {% if not loop.last %}
+                        {% set attrs = attrs|add('class', 'mb-8 mb-xl-0') %}
+                    {% endif %}
+                    <div {{ add_animation(attrs) }}>
+                        {{ dynamic_sidebar('footer-' ~ i) }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+

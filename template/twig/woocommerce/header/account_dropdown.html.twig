@@ -1,0 +1,20 @@
+<div class="dropdown-menu animated-on-show w-200px rounded-lg mt-10 right-0 left-auto border-0 py-0">
+    <div class="card rounded-block">
+        {% if links is defined
+            and links is not empty %}
+            <div class="card-body bg-transparent px-5 py-7">
+                <ul class="list-unstyled mb-0">
+                    {% for key, item in links %}
+                        <li class="{% if not loop.last %}mb-4{% endif %}">
+                            <a href="{{ item.link|raw }}" class="text-dark-75 text-hover-primary d-flex">
+                                {{ item.icon|raw }}
+                                <span class="ml-2">{{ item.text|raw }}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</div>
+

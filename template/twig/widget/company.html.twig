@@ -1,0 +1,9 @@
+<div class="fs-md text-dark">
+    {% for item in items %}
+        <div class="d-flex justify-content-between mb-3">
+            <strong class="mb-1 mb-xxl-0">{{ item.title|raw }}:</strong>
+            <span>{{ item.value|raw }}</span>
+        </div>
+    {% endfor %}
+</div>
+

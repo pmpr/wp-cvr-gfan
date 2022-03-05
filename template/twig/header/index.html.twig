@@ -1,0 +1,34 @@
+{{ do_action('start_render_header') }}
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]>
+<html lang="en" class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]>
+<html lang="en" class="no-js"><![endif]-->
+
+<head>{{ wp_head() }}</head>
+<body {{ body_class() }} id="top">
+<div class="body-overlay"></div>
+<header id="side_header" class="site-header header-area">
+
+    {% if customizer_option('header_top_notice_text') %}
+        <div class="bg-brand-primary font-weight-bold text-white py-2 fs-sm text-center">
+            <div class="container">
+                {{ customizer_option('header_top_notice_text')|raw }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% include get_template('top', _self) %}
+
+    {% include get_template('middle', _self) %}
+
+    {% include get_template('bottom', _self) %}
+
+    {% include get_template('breadcrumb', _self) %}
+</header>
+{% include get_template('./mobile', _self) %}
+
