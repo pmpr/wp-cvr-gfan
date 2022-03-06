@@ -11,24 +11,27 @@
 
 <head>{{ wp_head() }}</head>
 <body {{ body_class() }} id="top">
-<div class="body-overlay"></div>
-<header id="side_header" class="site-header header-area">
 
-    {% if customizer_option('header_top_notice_text') %}
-        <div class="bg-brand-primary font-weight-bold text-white py-2 fs-sm text-center">
-            <div class="container">
-                {{ customizer_option('header_top_notice_text')|raw }}
+{% if apply_filters('gfan_has_header', 1) %}
+    <div class="body-overlay"></div>
+    <header id="side_header" class="site-header header-area">
+
+        {% if customizer_option('header_top_notice_text') %}
+            <div class="bg-brand-primary font-weight-bold text-white py-2 fs-sm text-center">
+                <div class="container">
+                    {{ customizer_option('header_top_notice_text')|raw }}
+                </div>
             </div>
-        </div>
-    {% endif %}
+        {% endif %}
 
-    {% include get_template('top', _self) %}
+        {% include get_template('top', _self) %}
 
-    {% include get_template('middle', _self) %}
+        {% include get_template('middle', _self) %}
 
-    {% include get_template('bottom', _self) %}
+        {% include get_template('bottom', _self) %}
 
-    {% include get_template('breadcrumb', _self) %}
-</header>
-{% include get_template('./mobile', _self) %}
+        {% include get_template('breadcrumb', _self) %}
+    </header>
+    {% include get_template('./mobile', _self) %}
 
+{% endif %}
