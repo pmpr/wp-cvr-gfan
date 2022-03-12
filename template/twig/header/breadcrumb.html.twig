@@ -1,4 +1,4 @@
-{% set can_render = apply_filters('can_render_breadcrumb'|generate_hook, 1) %}
+{% set can_render = apply_filters('breadcrumb_can_render'|generate_hook, 1) %}
 {% if can_render %}
     <div class="breadcrumb-wrap overflow-auto border-bottom bg-white">
         <div class="container">
