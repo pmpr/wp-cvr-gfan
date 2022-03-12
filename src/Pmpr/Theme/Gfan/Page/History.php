@@ -1,7 +1,7 @@
 <?php
 /*   _______________________________________
     |  Obfuscated by PMPR - Php Obfuscator  |
-    |             622cd2ed9cb8d             |
+    |             622d144c6ec93             |
     |_______________________________________|
 */
- namespace Pmpr\Theme\Gfan\Page; class History extends Common { public function __construct() { $this->slug = "\x68\151\x73\x74\157\162\171"; $this->title = __("\x48\151\x73\x74\x6f\162\x79", PR__THM__GFAN); $this->isPrivate = false; parent::__construct(); } }
+ namespace Pmpr\Theme\Gfan\Page; class History extends Common { public function __construct() { $this->slug = "\x68\x69\x73\x74\157\162\x79"; $this->title = __("\110\151\x73\164\157\x72\x79", PR__THM__GFAN); $this->isPrivate = false; parent::__construct(); } }
