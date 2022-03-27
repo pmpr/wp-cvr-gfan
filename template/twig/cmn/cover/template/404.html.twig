@@ -1,0 +1,33 @@
+{% if image is not empty %}
+    <p class="mb-8 media-hover-move up">
+        {{ wp_get_attachment_image(image, 'medium', {class: 'mx-auto'})|raw }}
+    </p>
+{% endif %}
+
+{% if title is not empty %}
+    <h1 class="display-2">{{ title|raw }}</h1>
+{% endif %}
+
+{% if text is not empty %}
+    <p class="text-gray-600 my-7 fs-7x">{{ text|raw }}</p>
+{% endif %}
+
+{% if has_search %}
+    <div class="border-2 border-light-primary w-100 mx-auto mx-w560px rounded bg-white">
+        {{ get_search_form({
+            target: 'header',
+        })|raw }}
+    </div>
+{% endif %}
+
+{% if url is defined %}
+    <div class="mt-8">
+        {% include get_template('../../../common/call_to_action', _self) with {
+            icon: action_icon,
+            text: action_text,
+            icon_left: 1,
+            media_hover: 0,
+            permalink: url,
+        } %}
+    </div>
+{% endif %}

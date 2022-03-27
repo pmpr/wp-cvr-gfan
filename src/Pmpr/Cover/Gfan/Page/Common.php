@@ -4,4 +4,4 @@
     |             623fff20c3446             |
     |_______________________________________|
 */
- pmpr_do_action("\x72\x65\x6e\144\x65\162\x5f\x63\157\x6d\155\x65\x6e\164\x73");
+ namespace Pmpr\Cover\Gfan\Page; use Pmpr\Common\Foundation\Page\Page; abstract class Common extends Page { }

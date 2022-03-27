@@ -1,7 +1,7 @@
 {% extends get_template('./base', _self) %}
 
 {% block body %}
-    {% set slides = get_theme_option('home_top_slider', {}) %}
+    {% set slides = get_cover_option('home_top_slider', {}) %}
     {% if slides %}
         <section class="home-slider mb-8 carousel-container">
             {% embed get_template('../common/carousel/carousel', _self) with {
@@ -46,12 +46,12 @@
         </section>
     {% endif %}
 
-    {% set categories = get_theme_option('home_slider_cats', {}) %}
+    {% set categories = get_cover_option('home_slider_cats', {}) %}
     {% if categories %}
         <section class="product-categories position-relative py-8 carousel-container">
             <div class="container">
                 <div class="section-title mb-8 d-flex justify-content-between position-relative">
-                    <h2 class="h3">{{ get_theme_option('home_slider_cats_title', '')|raw }}</h2>
+                    <h2 class="h3">{{ get_cover_option('home_slider_cats_title', '')|raw }}</h2>
                     {% include get_template('../common/carousel/arrows', _self) with {
                         icon: 'arrow',
                         class: 'd-flex',
@@ -79,7 +79,7 @@
         </section>
     {% endif %}
 
-    {% set catalog = get_theme_option('catalog', {}) %}
+    {% set catalog = get_cover_option('catalog', {}) %}
     {% if catalog %}
         <section class="catalog py-8">
             <div class="container">
@@ -126,7 +126,7 @@
         </section>
     {% endif %}
 
-    {% set products = get_theme_option('home_products', {}) %}
+    {% set products = get_cover_option('home_products', {}) %}
     {% if products %}
         <section class="products pt-8 carousel-container">
             <div class="container">
@@ -158,11 +158,11 @@
     {% endif %}
 
     {% include get_template('../common/featured', _self) with {
-        featured: get_theme_option('featured_product', {}),
+        featured: get_cover_option('featured_product', {}),
         image_order: 3
     } %}
 
-    {% set about = get_theme_option('about', {}) %}
+    {% set about = get_cover_option('about', {}) %}
     {% if about %}
         <section class="about py-8">
             <div class="container">
@@ -191,11 +191,11 @@
 
 
     {% include get_template('../common/featured', _self) with {
-        featured: get_theme_option('featured_category', {}),
+        featured: get_cover_option('featured_category', {}),
         image_order: 3
     } %}
 
-    {% set comments = get_theme_option('home_comments', {}) %}
+    {% set comments = get_cover_option('home_comments', {}) %}
     {% if comments %}
         <section class="comments py-8 carousel-container">
             <div class="container">

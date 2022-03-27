@@ -6,7 +6,7 @@
         <div class="container">
             {% endif %}
             <div class="center-cover my-8 rounded-xxl d-flex justify-content-between"
-                 style="background: url({{ get_theme_option('header_jumbotron_background', '')|raw }})">
+                 style="background: url({{ get_cover_option('header_jumbotron_background', '')|raw }})">
                 <div class="p-8 px-lg-18 py-lg-20">
                     {% set title_attrs = title_attrs|default({}) %}
                     {% set title_attrs = title_attrs|add('class', 'text-dark mb-5 page-header') %}

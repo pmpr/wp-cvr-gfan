@@ -4,4 +4,4 @@
     |             623fff20c3446             |
     |_______________________________________|
 */
- pmpr_do_action("\x72\x65\x6e\144\x65\162\x5f\x63\157\x6d\155\x65\x6e\164\x73");
+ namespace Pmpr\Cover\Gfan\Navigation\Walker; use Pmpr\Common\Cover\Navigation\Walker as BaseClass; use Pmpr\Cover\Gfan\Traits\CommonTrait; class Walker extends BaseClass { use CommonTrait; }

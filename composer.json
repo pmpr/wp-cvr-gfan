@@ -1,11 +1,12 @@
 {
-  "name": "pmpr-thm/wp-thm-gfan",
+  "name": "pmpr-cvr/wp-cvr-gfan",
   "type": "project",
   "license": "proprietary",
-  "description": "GFAN Theme for Wordpress",
+  "description": "GFAN Cover for Wordpress",
   "keywords": [
     "wordpress",
     "theme",
+    "cover",
     "pmpr",
     "gfan"
   ],
@@ -15,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Pmpr\\Theme\\Gfan\\": "src/Pmpr/Theme/Gfan"
+      "Pmpr\\Cover\\Gfan\\": "src/Pmpr/Cover/Gfan"
     }
   },
   "minimum-stability": "dev"
