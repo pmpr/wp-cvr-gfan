@@ -20,8 +20,8 @@
 {% elseif video_url is defined
     and video_url is not empty %}
 
-    <div class="position-relative bg-overlay dark-70 {{ container_class|raw }}">
-        <video autoplay muted loop class="center-video position-absolute {{ video_class|raw }}">
+    <div class="position-relative bg-overlay dark-50 {{ container_class|raw }}">
+        <video autoplay muted loop class="center-video video-overlay position-absolute {{ video_class|raw }}">
             <source src="{{ video_url|raw }}" type="{{ get_mime_type(attachment)|raw }}">
             Your browser does not support HTML5 video.
         </video>

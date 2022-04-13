@@ -13,7 +13,7 @@
                 carousel_config: {
                     fade: true,
                     loop: true,
-                    dots: true,
+                    dots: false,
                     arrows: true,
                     autoplay: true,
                     slidesToShow: 1,
@@ -24,20 +24,30 @@
                 {% block carousel %}
                     {% embed get_template('../common/background_media', _self) with {
                         image_url: wp_get_attachment_image_url(carousel.image_id),
-                        container_class: 'carousel-item-wrapper h-540px mx-md-h350px',
+                        container_class: 'carousel-item-wrapper h-540px mx-md-h350px position-relative',
                     } %}
                         {% block body %}
-                            <div class="carousel-item-content text-center centered-absolute t-n50 left-50">
-                                <h1 class="display-2 mb-11">{{ carousel.text|raw }}</h1>
-                                {% if carousel.subtext|raw %}
-                                    <p class="mb-5 fs-xl lh-1x">{{ carousel.subtext|raw }}</p>
-                                {% endif %}
-                                {% if carousel.action_text %}
-                                    {% include get_template('../common/call_to_action', _self) with {
-                                        text: carousel.action_text,
-                                        permalink: carousel.action_permalink,
-                                    } %}
-                                {% endif %}
+                            <div class="carousel-item-content position-absolute bottom-0 w-100 bg-overlay dark-50">
+                                <div class="container py-5">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6">
+                                            <div class="font-weight-bold heading-ff mb-6 text-white text-center text-lg-left slide-title">{{ carousel.text|raw }}</div>
+                                            {% if carousel.subtext|raw %}
+                                                <p class="mb-5 fs-lg lh-md text-white d-none d-lg-block">{{ carousel.subtext|raw }}</p>
+                                            {% endif %}
+                                        </div>
+                                        {% if carousel.action_text %}
+                                            <div class="col-12 col-lg-4 offset-lg-2 my-auto">
+                                                <div class="d-flex justify-content-center justify-content-lg-end">
+                                                    {% include get_template('../common/call_to_action', _self) with {
+                                                        text: carousel.action_text,
+                                                        permalink: carousel.action_permalink,
+                                                    } %}
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
                             </div>
                         {% endblock %}
                     {% endembed %}
@@ -100,8 +110,8 @@
                                         } %}
                                     </div>
                                     <div class="col-12 col-lg-6">
-                                        {{ render_if_has_content('h2', {class: 'mb-5 fs-sm-20x'}, catalog.title) }}
-                                        {{ render_if_has_content('p', {class: 'mb-11 fs-8x'}, catalog.subtext) }}
+                                        {{ render_if_has_content('div', {class: 'mb-5 font-weight-bold heading-ff h2 fs-sm-20x'}, catalog.title) }}
+                                        {{ render_if_has_content('div', {class: 'mb-10'}, wpautop(catalog.subtext)) }}
 
                                         <div class="d-flex flex-column flex-md-row">
 
@@ -169,7 +179,7 @@
                 <div {{ add_animation({class: 'row justify-content-center'}) }}>
                     <div class="order-1 col-12 col-lg-6 col-xl-5 mb-6 mb-lg-0 d-flex justify-content-center flex-column">
                         <h2 class="mb-4 text-center">{{ about.title|raw }}</h2>
-                        <div class="text-center fs-lg">{{ about.text|raw }}</div>
+                        <div class="text-center fs-lg">{{ wpautop(about.text)|raw }}</div>
                         <div class="text-center mt-7">
                             {% include get_template('../common/call_to_action', _self) with {
                                 text: about.button,
@@ -211,7 +221,7 @@
                             {% block carousel %}
                                 <div class="text-center py-5">
                                     <div class="px-0 px-lg-20">
-                                        <p class="text-normal fs-lg mb-5">{{ carousel.text|raw }}</p>
+                                        <p class="text-normal fs-lg mb-5">{{ wpautop(carousel.text)|raw }}</p>
                                         <div class="text-primary h4">- {{ carousel.user|raw }} -</div>
                                     </div>
                                 </div>
