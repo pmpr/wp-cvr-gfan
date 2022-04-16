@@ -30,14 +30,14 @@
                             <div class="carousel-item-content position-absolute bottom-0 w-100 bg-overlay dark-50">
                                 <div class="container py-5">
                                     <div class="row">
-                                        <div class="col-12 col-lg-6">
+                                        <div class="col-12 col-lg-9">
                                             <div class="font-weight-bold heading-ff mb-6 text-white text-center text-lg-left slide-title">{{ carousel.text|raw }}</div>
                                             {% if carousel.subtext|raw %}
                                                 <p class="mb-5 fs-lg lh-md text-white d-none d-lg-block">{{ carousel.subtext|raw }}</p>
                                             {% endif %}
                                         </div>
                                         {% if carousel.action_text %}
-                                            <div class="col-12 col-lg-4 offset-lg-2 my-auto">
+                                            <div class="col-12 col-lg-3 my-auto">
                                                 <div class="d-flex justify-content-center justify-content-lg-end">
                                                     {% include get_template('../common/call_to_action', _self) with {
                                                         text: carousel.action_text,

@@ -1,7 +1,7 @@
 <?php
 /*   _______________________________________
     |  Obfuscated by PMPR - Php Obfuscator  |
-    |             6256fc9c720e2             |
+    |             625a79bd44a53             |
     |_______________________________________|
 */
- namespace Pmpr\Cover\Gfan\Widget; class Link extends Common { public function __construct() { parent::__construct(__("\x4c\x69\x6e\x6b\x73", PR__CVR__GFAN), __("\104\x69\x73\160\x6c\141\171\x20\x74\150\145\x20\x73\145\x6c\x65\143\164\145\x64\40\x6c\x69\156\153\163\56", PR__CVR__GFAN)); } public function ugmceccgwaaaigiy() : array { return [self::qwumqqyuasyskkkc => ["\164\x79\x70\145" => "\x73\145\x6c\145\143\164\55\160\x6f\x73\x74", "\156\141\x6d\145" => __("\x49\164\x65\x6d\163", PR__CVR__GFAN), "\x61\x73\x2d\155\165\154\164\151\160\x6c\145"]]; } }
+ namespace Pmpr\Cover\Gfan\Widget; class Link extends Common { public function __construct() { parent::__construct(__("\x4c\151\x6e\153\x73", PR__CVR__GFAN), __("\x44\x69\163\x70\154\x61\171\x20\164\150\145\40\163\x65\154\x65\143\x74\x65\144\x20\154\151\156\x6b\163\x2e", PR__CVR__GFAN)); } public function ugmceccgwaaaigiy() : array { return [self::qwumqqyuasyskkkc => ["\164\x79\160\145" => "\x73\x65\154\x65\x63\164\55\160\157\x73\164", "\156\x61\155\x65" => __("\111\164\x65\x6d\x73", PR__CVR__GFAN), "\x61\x73\x2d\x6d\165\154\164\151\x70\x6c\145"]]; } }
