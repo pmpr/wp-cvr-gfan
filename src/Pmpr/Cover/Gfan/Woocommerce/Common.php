@@ -1,7 +1,7 @@
 <?php
 /*   _______________________________________
     |  Obfuscated by PMPR - Php Obfuscator  |
-    |             632763af93ca4             |
+    |             63920df2a8dcb             |
     |_______________________________________|
 */
- namespace Pmpr\Cover\Gfan\Woocommerce; use Pmpr\Cover\Gfan\Container; class Common extends Container { }
+ namespace Pmpr\Cover\Gfan\Woocommerce; use Pmpr\Cover\Gfan\Container; abstract class Common extends Container { }

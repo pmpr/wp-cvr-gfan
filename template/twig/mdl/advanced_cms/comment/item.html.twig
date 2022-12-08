@@ -18,7 +18,7 @@
             <p class="font-size-sm text-gray-700 mb-0">
                 {{ text|raw }}
                 <span class="show-element">
-                    {{ comment_reply_link({
+                    {{ get_comment_reply_link({
                         depth: depth,
                         max_depth: max_depth,
                         reply_text: __('Reply', domain),

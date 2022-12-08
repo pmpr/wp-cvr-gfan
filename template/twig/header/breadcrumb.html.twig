@@ -1,8 +1,8 @@
-{% set can_render = apply_filters('breadcrumb_can_render'|generate_hook, 1) %}
+{% set can_render = pmpr_apply_filters('breadcrumb_allow_render', 1) %}
 {% if can_render %}
     <div class="breadcrumb-wrap overflow-auto border-bottom bg-white">
         <div class="container">
-            {{ do_action('render_breadcrumb'|generate_hook, {}) }}
+            {{ pmpr_do_action('render_breadcrumb', {}) }}
         </div>
     </div>
 {% endif %}

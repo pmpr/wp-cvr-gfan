@@ -1,6 +1,6 @@
 {% if main_images and thumbnails %}
 
-    {% embed get_template('../../common/carousel/carousel', _self) with {
+    {% embed get_cover_template('common/carousel/carousel') with {
         carousel_config: {
             fade: false,
             arrows: false,
@@ -21,7 +21,7 @@
 
         {% set slidesToShow = 4 %}
         {% set arrows = thumbnails|length > slidesToShow %}
-        {% embed get_template('../../common/carousel/carousel', _self) with {
+        {% embed get_cover_template('common/carousel/carousel') with {
             carousel_config: {
                 dots: false,
                 arrows: arrows,
