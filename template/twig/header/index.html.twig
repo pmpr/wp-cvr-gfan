@@ -16,10 +16,10 @@
     <div class="body-overlay"></div>
     <header id="side_header" class="site-header header-area">
 
-        {% if customizer_option('header_top_notice_text') %}
+        {% if get_cover_option('header_top_notice_text') %}
             <div class="bg-brand-primary font-weight-bold text-white py-2 fs-sm text-center">
                 <div class="container">
-                    {{ customizer_option('header_top_notice_text')|raw }}
+                    {{ get_cover_option('header_top_notice_text')|raw }}
                 </div>
             </div>
         {% endif %}

@@ -1,18 +1,18 @@
-{% if customizer_option('bottom_header') %}
-    <div class="header-bottom border-top border-bottom py-3{% if customizer_option('sticky_menu_header') %} sticky-bar{% endif %}">
+{% if get_cover_option('bottom_header') %}
+    <div class="header-bottom border-top border-bottom py-3{% if get_cover_option('sticky_menu_header') %} sticky-bar{% endif %}">
         <div class="container">
             <div class="position-relative d-flex justify-content-between">
                 <div class="d-block d-lg-none centered-absolute t-n50-0 left-0">
                     <a href="#" class="mobile-aside-open">
-                        {{ get_icon('fontawesome/bars', {class: 'svg-icon icon-lg icon-dark'})|raw }}
+                        {{ render_icon('fasm/6/set/bars', {class: 'svg-icon icon-lg icon-dark'}) }}
                     </a>
                 </div>
-                {% if customizer_option('mobile_logo') %}
+                {% if get_cover_option('mobile_logo') %}
                     <div class="logo ml-10 d-block d-lg-none">
                         {% include get_template('../common/logo', _self) with {
                             width: 78,
                             height: 60,
-                            option_key: 'mobile_logo',
+                            logo_type: 'mobile'
                         } %}
                     </div>
                 {% endif %}
@@ -33,7 +33,7 @@
                     {% endif %}
                 </div>
 
-                {% set phone = pmpr_apply_filters('get_contact_information_by_key', {}, customizer_option('header_contact_us')) %}
+                {% set phone = pmpr_apply_filters('get_contact_information_by_key', {}, get_cover_option('header_contact_us')) %}
                 {% if phone %}
                     <div class="d-none d-lg-block">
                         {% include get_template('../common/information', _self) with {info: phone} %}

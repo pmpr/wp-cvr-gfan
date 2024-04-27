@@ -1,16 +1,16 @@
-{% if customizer_option('middle_header') %}
+{% if get_cover_option('middle_header') %}
     <div class="header-middle py-3 d-none d-lg-block">
         <div class="container">
             <div class="d-flex">
-                {% if customizer_option('desktop_logo') %}
+                {% if get_cover_option('desktop_logo') %}
                     <div class="logo mr-12">
                         {% include get_template('../common/logo', _self) with {
-                            option_key: 'desktop_logo'
+                            logo_type: 'desktop'
                         } %}
                     </div>
                 {% endif %}
                 <div class="d-flex justify-content-between align-items-center header-right w-100">
-                    {% if customizer_option('middle_header') %}
+                    {% if get_cover_option('middle_header') %}
                         <div class="border-2 border-light-primary w-100 mx-w560px rounded bg-white">
                             {{ get_search_form({
                                 target: 'header',

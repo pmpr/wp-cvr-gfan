@@ -1,6 +1,6 @@
 <span>© {{ "now"|date('Y')|datetime('Y') }},</span>
 <strong class="text-primary">{{ bloginfo('name')|raw }}</strong>
-{% set copyright = customizer_option('footer_copyright_text') %}
+{% set copyright = get_cover_option('footer_copyright_text') %}
 {% if copyright %}
     - {{ copyright|raw }}
 {% endif %}
