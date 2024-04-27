@@ -23,7 +23,7 @@
             } %}
                 {% block carousel %}
                     {% embed get_template('../common/background_media', _self) with {
-                        image_url: wp_get_attachment_image_url(carousel.image_id),
+                        image_url: wp_get_attachment_image_url(carousel.image),
                         container_class: 'carousel-item-wrapper h-540px mx-md-h350px position-relative',
                     } %}
                         {% block body %}

@@ -12,7 +12,7 @@
                 {% for feature in features %}
                     <div class="col-12 col-sm-6 col-md-4 col-xl-{{ lg_infix }} mb-6 mb-xl-0">
                         <div {{ add_animation({class: 'bg-white p-6 rounded-lg d-flex align-items-center media-hover-move up', delay: loop.index * 0.1}) }}>
-                            {{ wp_get_attachment_image(feature.image_id, 'small', {class: 'img-3x mr-4'})|raw }}
+                            {{ wp_get_attachment_image(feature.image, 'small', {class: 'img-3x mr-4'})|raw }}
                             <div class="d-flex flex-column justify-content-between my-auto">
                                 <h3 class="fs-8x">{{ feature.title|raw }}</h3>
                                 <p class="text-gray-600">{{ feature.description|raw }}</p>
