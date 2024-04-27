@@ -7,15 +7,13 @@
                         {{ render_icon('fasm/6/set/bars', {class: 'svg-icon icon-lg icon-dark'}) }}
                     </a>
                 </div>
-                {% if get_cover_option('mobile_logo') %}
-                    <div class="logo ml-10 d-block d-lg-none">
-                        {% include get_template('../common/logo', _self) with {
-                            width: 78,
-                            height: 60,
-                            logo_type: 'mobile'
-                        } %}
-                    </div>
-                {% endif %}
+                <div class="logo ml-10 d-block d-lg-none">
+                    {% include get_template('../common/logo', _self) with {
+                        width: 78,
+                        height: 60,
+                        logo_type: 'header'
+                    } %}
+                </div>
                 <div class="d-block d-lg-none centered-absolute t-n50-0 right-0">
                     {{ do_action('gfan_header_middle_right') }}
                 </div>

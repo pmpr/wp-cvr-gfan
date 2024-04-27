@@ -1,8 +1,8 @@
 <a href="{{ home_url()|esc_attr }}">
-    {{ pmpr_do_action('', {
+    {{ pmpr_do_action('render_site_logo', {
         key: logo_key,
         type: logo_type,
-        attrs: {class: 'mn-w100px'}
+        attrs: {class: 'mn-w100px'},
         size: logo_size|default([width|default('133'), height|default('78')])
     }) }}
 
