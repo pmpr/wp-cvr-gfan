@@ -1,4 +1,4 @@
-{% set phone = apply_filters('get_contact_information_by_key'|generate_hook, {}, phone) %}
+{% set phone = pmpr_apply_filters('get_contact_information_by_key', {}, phone) %}
 {% if phone %}
     <div class="hotline d-flex justify-content-start">
         {% include get_template('../common/whatsapp', _self) with {

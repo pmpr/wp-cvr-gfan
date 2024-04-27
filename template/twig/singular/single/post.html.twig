@@ -21,7 +21,7 @@
                 {% endif %}
                 <h1 class="mb-3">{{ the_title()|raw }}</h1>
                 <div class="d-flex fs-3x lh-xl">
-                    {{ do_action('metadata_render'|generate_hook, {
+                    {{ pmpr_do_action('metadata_render', {
                         post: post,
                         include: ['author', 'publish', 'study_time'],
                     }) }}

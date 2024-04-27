@@ -14,11 +14,16 @@
     "php": ">=7.4",
     "pmpr-cmn/wp-cmn-cover": "~1.1"
   },
+  "prod-require": {
+    "php": "7.4",
+    "wordpress": "6.0",
+    "wp-cmn-cover": "latest"
+  },
   "autoload": {
     "psr-4": {
       "Pmpr\\Cover\\Gfan\\": "src/Pmpr/Cover/Gfan"
     }
   },
   "minimum-stability": "dev",
-  "version": "1.1.15"
+  "tag": "1.2.0"
 }

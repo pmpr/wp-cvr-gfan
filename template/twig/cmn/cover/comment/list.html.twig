@@ -1,0 +1,13 @@
+<div class="py-7 mt-7 border-top">
+    <h3 class="pt-4 mb-8">{{ title|raw }}</h3>
+    {% if not has_comment %}
+        <p class="fs-7x m-0">{{ empty_message|raw }}</p>
+    {% endif -%}
+    <ul id="comment_list" class="list-unstyled mb-0 comments-list{% if not has_comment %} done{% endif %}">
+        {% if has_comment %}
+            {{ comments|raw }}
+        {% endif %}
+    </ul>
+    {{ pagination|raw }}
+</div>
+

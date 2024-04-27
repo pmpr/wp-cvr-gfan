@@ -1,12 +1,12 @@
 {% if apply_filters('gfan_has_footer', 1) %}
-    {% set footer_attrs = apply_filters('footer_attrs'|generate_hook, {class: 'main'}) %}
+    {% set footer_attrs = pmpr_apply_filters('footer_attrs', {class: 'main'}) %}
     <footer {{ footer_attrs|parse_attrs|raw }}>
         {% include get_template('features', _self) %}
 
         {% include get_template('middle', _self) %}
 
         {% include get_template('bottom', _self) %}
-        {{ do_action('gfan_footer_end'|generate_hook) }}
+        {{ pmpr_do_action('gfan_footer_end') }}
     </footer>
 {% endif %}
 

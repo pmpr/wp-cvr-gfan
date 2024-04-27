@@ -6,7 +6,7 @@
         <div class="col-12 col-lg-5 mn-h366px post-thumb center-cover"
              style="background-image: url({{ get_the_post_thumbnail_url(id, 'medium') }})"></div>
         <div class="col-12 col-lg-7 post-data px-9 py-6 my-auto">
-            {{ do_action('post_archive_loop_before_title'|generate_hook, post) }}
+            {{ pmpr_do_action('post_archive_loop_before_title', post) }}
             <h3 class="mb-5">
                 <a class="text-hover-primary max-line max-line-2"
                    href="{{ permalink|raw }}">{{ get_title(id)|raw }}</a>
@@ -16,7 +16,7 @@
             </div>
             <div class="d-flex justify-content-between flex-column flex-sm-row flex-lg-row flex-xxl-row">
                 <div class="d-flex fs-3x mb-3 mb-md-0 mb-lg-3 mb-xxl-0">
-                    {{ do_action('metadata_render'|generate_hook, {
+                    {{ pmpr_do_action('metadata_render', {
                         post: post,
                         include: ['publish', 'study_time'],
                     }) }}

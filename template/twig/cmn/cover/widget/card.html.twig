@@ -1,0 +1,9 @@
+{% if items is defined
+    and items is not empty %}
+    <div class="card rounded-xxl border shadow-sm p-7">
+        {% if title is defined and title is not empty %}
+            <h3 class="fs-xl mb-7 pb-5 border-bottom header-bottom-border">{{ title|raw }}</h3>
+        {% endif %}
+        {% block body %}{% endblock %}
+    </div>
+{% endif %}

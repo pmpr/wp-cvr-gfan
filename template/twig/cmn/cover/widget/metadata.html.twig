@@ -1,0 +1,24 @@
+{% if items %}
+    {% for key, item in items %}
+        {% set class = item_class ~ ' text-normal my-auto metadata-' ~ item.name %}
+        {% if not loop.first %}
+            {% set class = class ~ ' position-relative pl-3 has-dot' %}
+        {% endif %}
+        {% if not loop.last %}
+            {% set class = class ~ ' mr-3' %}
+        {% endif %}
+        {% if key == 'author' %}
+            <a href="{{ item.link|raw }}" class="pr-2">{{ render_author_data('avatar', item.origin, {size: 32, class: 'rounded-circle'})|raw }}</a>
+            <span class="text-normal my-auto mr-1">By</span>
+            {% set class = class ~ ' text-primary-secondary' %}
+            <a href="{{ item.link|raw }}" class="{{ class|raw }}">{{ render_author_data('name', item.origin)|raw }}</a>
+        {% else %}
+            {% if item.link %}
+                {% set class = class ~ ' text-hover-primary' %}
+                <a href="{{ item.link|raw }}" class="{{ class|raw }}">{{ item.value|raw }}</a>
+            {% else %}
+                <span class="{{ class|raw }}">{{ item.value|raw }}</span>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endif %}

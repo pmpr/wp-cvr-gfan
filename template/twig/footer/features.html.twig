@@ -1,4 +1,4 @@
-{% set features = apply_filters('gfan_get_features'|generate_hook, {}) %}
+{% set features = pmpr_apply_filters('gfan_get_features', {}) %}
 {% if features %}
     <section class="featured py-15 mt-10">
         <div class="container">

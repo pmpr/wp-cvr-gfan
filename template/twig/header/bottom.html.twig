@@ -33,7 +33,7 @@
                     {% endif %}
                 </div>
 
-                {% set phone = apply_filters('get_contact_information_by_key'|generate_hook, {}, customizer_option('header_contact_us')) %}
+                {% set phone = pmpr_apply_filters('get_contact_information_by_key', {}, customizer_option('header_contact_us')) %}
                 {% if phone %}
                     <div class="d-none d-lg-block">
                         {% include get_template('../common/information', _self) with {info: phone} %}
