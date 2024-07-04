@@ -11,11 +11,11 @@
     "gfan"
   ],
   "require": {
-    "php": ">=8.3",
+    "php": ">=8.2",
     "pmpr-cmn/wp-cmn-cover": "~1.1"
   },
   "prod-require": {
-    "php": "8.3",
+    "php": "8.2",
     "wordpress": "6.0",
     "wp-cmn-cover": "latest"
   },
@@ -25,5 +25,5 @@
     }
   },
   "minimum-stability": "dev",
-  "tag": "1.2.22"
+  "tag": "1.2.23"
 }
