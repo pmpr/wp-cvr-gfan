@@ -26,6 +26,7 @@
     {% endif %}
     {{ content|raw }}
     {{ do_action('single_after_content', post) }}
+    {{ pmpr_do_action('single_after_content', post) }}
     {% if is_centered %}
     </div>
     </div>
