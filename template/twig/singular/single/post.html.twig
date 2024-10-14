@@ -12,7 +12,7 @@
     <header class="single-header my-8">
         <div class="row">
             <div class="col-xl-10 col-lg-12 m-auto">
-                {% set category = get_term(post, 'category', 1) %}
+                {% set category = get_post_term(post, 'category') %}
                 {% if category %}
                     <div class="h6 mb-3">
                         <a href="{{ get_term_link(category)|raw }}"
@@ -38,7 +38,7 @@
                 <div class="fs-xl single-excerpt mb-8 text-dark text-justify">{{ get_the_excerpt(post)|raw }}</div>
             {% endif %}
             {% include get_template('../../common/have_posts', _self) %}
-            {% set tags = get_term(post, 'post_tag', 0) %}
+            {% set tags = get_post_terms(post, 'post_tag') %}
             <div class="mt-10 pt-7 mb-8 tags border-top">
                 {% for tag in tags %}
                     <a href="{{ get_term_link(tag)|raw }}" rel="tag"
