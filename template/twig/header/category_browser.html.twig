@@ -5,10 +5,10 @@
            id="category_browser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {% set icon = get_cover_option('category_browser_icon') %}
             {% if icon %}
-                {{ render_icon(icon, {class: 'mr-2 svg-icon icon-1x icon-white my-auto'}) }}
+                {{ render_icon(icon, {class: 'mr-2 icon-1x icon-white my-auto'}) }}
             {% endif %}
             <span>{{ get_cover_option('category_browser_text')|raw }}</span>
-            {{ render_icon('render/angle-down', {class: 'ml-2 svg-icon icon-1x icon-white my-auto rotate-180'}) }}
+            {{ render_icon('render/angle-down', {class: 'ml-2 icon-1x icon-white my-auto rotate-180'}) }}
         </a>
         <div class="category-browser dropdown-menu mt-8 mn-w470px p-9 border-light-primary animated-on-show rounded-block"
              aria-labelledby="category_browser">

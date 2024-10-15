@@ -2,7 +2,7 @@
     <a class="{{ link_class|default('d-flex rounded-md bg-primary px-4 py-3')|raw }}"
        href="https://api.whatsapp.com/send?phone={{ phone.value|esc_attr }}"
        target="_blank" rel="nofollow noreferrer noopener">
-        {{ render_icon(phone.icon, {class: 'svg-icon icon-' ~ icon_size|default('xxl') ~ ' my-auto icon-white'}) }}
+        {{ render_icon(phone.icon, {class: 'icon-' ~ icon_size|default('xxl') ~ ' my-auto icon-white'}) }}
         <p class="ml-2 my-auto heading-ff text-white text-center flex-column justify-content-between{% if show_text_on is not empty %} d-none d-{{ show_text_on }}-flex{% else %} d-flex{% endif %}">
                 <span class="font-weight-bold fs-{{ title_font_size|default('xl') }}">
                     {% if text is defined and text is not empty %}

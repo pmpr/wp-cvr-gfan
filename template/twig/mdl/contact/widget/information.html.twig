@@ -6,7 +6,7 @@
             </div>
         {% else %}
             <li class="text-dark d-flex{% if not loop.last %} mb-3{% endif %}">
-                {{ render_icon(item.icon, {class: 'svg-icon icon-primary mr-2 icon-' ~ icon_size}) }}
+                {{ render_icon(item.icon, {class: 'icon-primary mr-2 icon-' ~ icon_size}) }}
                 <div class="w-100 d-flex justify-content-between">
                     <span class="pr-2">{{ item.title|raw }}:</span>
                     <strong class="text-justify">{{ item.value|raw }}</strong>

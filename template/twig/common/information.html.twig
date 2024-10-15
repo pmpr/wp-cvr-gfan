@@ -2,7 +2,7 @@
     {% set is_phone = is_phone|default(1) %}
     {% set element = is_phone ? 'a' : 'div' %}
     <{{ element }} {% if is_phone %}href="tel: {{ info.value|raw }}" {% endif%}class="d-flex">
-        {{ render_icon(info.icon, {class: 'svg-icon icon-' ~ icon_size|default('xl') ~ ' my-auto mr-3 icon-' ~ icon_color|default('dark')}, 1) }}
+        {{ render_icon(info.icon, {class: 'icon-' ~ icon_size|default('xl') ~ ' my-auto mr-3 icon-' ~ icon_color|default('dark')}, 1) }}
         <p class="my-auto lh-md text-{{ text_color|default('primary') }} text-center d-flex flex-column justify-content-between">
             <span class="text-left font-weight-bold fs-{{ font_size|default('xxl') }} heading-ff">{{ info.value|raw }}</span>
             {% if info.subtext %}
