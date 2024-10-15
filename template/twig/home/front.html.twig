@@ -74,13 +74,27 @@
                 } %}
                     {% block carousel %}
                         <div {{ add_animation({class: 'px-3 mb-5 position-relative', delay: loop.index * 0.1}) }}>
-                            <a href="{{ carousel.permalink }}"
-                               class="bg-hover-white d-flex flex-column bg-gray-100 rounded-xl px-4 py-6 border border-white border-hover-light-primary">
-                                <figure class="img-hover-scale overflow-hidden mx-auto mr-4">
-                                    {{ wp_get_attachment_image(carousel.image, 'mini')|raw }}
-                                </figure>
-                                <h3 class="h6 mx-auto">{{ carousel.title|raw }}</h3>
-                            </a>
+                            {% embed get_template('../common/background_media', _self) with {
+                                attachment: carousel.image,
+                                bg_image_size: 'thumbnail',
+                                container_class: 'rounded-xl overflow-hidden border border-white border-hover-light-primary'
+                            } %}
+                                {% block body %}
+                                    <a href="{{ carousel.permalink }}" class="d-block text-center">
+                                        <div class="bg-overlay dark-50 centered-overlay">
+                                            <h3 class="h4 mx-auto text-white z-index-1 position-relative h-100 m-0 px-4 py-16">{{ carousel.title|raw }}</h3>
+                                        </div>
+                                    </a>
+                                {% endblock %}
+                            {% endembed %}
+
+{#                            <a href="{{ carousel.permalink }}" style="background-image: url('{{ carousel.image|esc_url }}')"#}
+{#                               class="bg-hover-white d-flex flex-column bg-gray-100 rounded-xl px-4 py-6 border border-white border-hover-light-primary">#}
+{#                                <figure class="img-hover-scale overflow-hidden mx-auto mr-4">#}
+{#                                    {{ wp_get_attachment_image(carousel.image, 'mini')|raw }}#}
+{#                                </figure>#}
+{#                                <h3 class="h5 mx-auto">{{ carousel.title|raw }}</h3>#}
+{#                            </a>#}
                         </div>
                     {% endblock %}
                     {% block carousel_arrow %}{% endblock %}

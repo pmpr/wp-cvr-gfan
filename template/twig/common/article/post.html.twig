@@ -4,7 +4,7 @@
 <article {{ add_animation({class: 'post-item mb-8 rounded-xxl border overflow-hidden', delay: 0, effect: 'fadeIn'}) }}>
     <div class="row no-gutters">
         <div class="col-12 col-lg-5 mn-h366px post-thumb center-cover"
-             style="background-image: url({{ get_the_post_thumbnail_url(id, 'medium') }})"></div>
+             style="background-image: url({{ get_the_post_thumbnail_url(id, 'medium')|esc_url }})"></div>
         <div class="col-12 col-lg-7 post-data px-9 py-6 my-auto">
             {{ pmpr_do_action('post_archive_loop_before_title', post) }}
             <h3 class="mb-5">
@@ -24,7 +24,7 @@
                 <a href="{{ permalink|raw }}"
                    class="d-flex text-primary heading-ff h6 justify-content-end hover-move up">
                     {{ __('Read more', domain)|raw }}
-                    {{ render_icon('fasm/6/set/arrow-right', {class: 'svg-icon icon-sm ml-1 icon-primary my-auto'}) }}
+                    {{ render_icon('fasm/6/set/arrow-right', {class: 'icon-sm ml-1 icon-primary my-auto'}) }}
                 </a>
             </div>
         </div>
