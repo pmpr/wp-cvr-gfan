@@ -73,17 +73,19 @@
                     carousel_class: 'mx-n3'
                 } %}
                     {% block carousel %}
-                        <div {{ add_animation({class: 'px-3 mb-5 position-relative', delay: loop.index * 0.1}) }}>
+                        <div {{ add_animation({class: 'px-3 position-relative', delay: loop.index * 0.1}) }}>
                             {% embed get_template('../common/background_media', _self) with {
                                 attachment: carousel.image,
                                 bg_image_size: 'thumbnail',
-                                container_class: 'rounded-xl overflow-hidden border border-white border-hover-light-primary'
+                                container_class: 'rounded-xl category-bg overflow-hidden border border-white border-hover-light-primary'
                             } %}
                                 {% block body %}
-                                    <a href="{{ carousel.permalink }}" class="d-block text-center">
-                                        <div class="bg-overlay dark-50 centered-overlay">
-                                            <h3 class="h4 mx-auto text-white z-index-1 position-relative h-100 m-0 px-4 py-16">{{ carousel.title|raw }}</h3>
+                                    <a href="{{ carousel.permalink }}" class="d-block h-100 text-center">
+                                        <div class="bg-overlay dark-50 centered-overlay h-100">
                                         </div>
+                                        <h3 class="h4 text-white centered-absolute m-0 max-line max-line-2">
+                                            {{ carousel.title|raw }}
+                                        </h3>
                                     </a>
                                 {% endblock %}
                             {% endembed %}
