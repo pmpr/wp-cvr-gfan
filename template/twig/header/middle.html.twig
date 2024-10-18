@@ -1,22 +1,18 @@
 {% if get_cover_option('middle_header') %}
     <div class="header-middle py-3 d-none d-lg-block">
         <div class="container">
-            <div class="d-flex">
-                <div class="logo mr-12">
-                    {% include get_template('../common/logo', _self) with {
-                        logo_type: 'header'
-                    } %}
-                </div>
-                <div class="d-flex justify-content-between align-items-center header-right w-100">
-                    {% if get_cover_option('middle_header') %}
-                        <div class="border-2 border-light-primary w-100 mx-w560px rounded bg-white">
-                            {{ get_search_form({
-                                target: 'header',
-                            })|raw }}
-                        </div>
-                    {% endif %}
-                    {{ do_action('gfan_header_middle_right') }}
-                </div>
+            <div class="d-flex justify-content-between">
+                {% include get_template('../common/logo', _self) with {
+                    logo_type: 'header'
+                } %}
+                {% if get_cover_option('middle_header') %}
+                    <div class="border-2 my-auto border-light-primary w-100 mx-w560px rounded bg-white">
+                        {{ get_search_form({
+                            target: 'header',
+                        })|raw }}
+                    </div>
+                {% endif %}
+                {{ do_action('gfan_header_middle_right') }}
             </div>
         </div>
     </div>

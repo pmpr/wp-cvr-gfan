@@ -1,0 +1,34 @@
+{% if carousels %}
+    <div class="swiper-container position-relative show-on-hover {{ container_class|raw }}">
+        <div class="swiper"{% if carousel_config is defined %}
+        data-carousel="{{ carousel_config|json_encode|esc_attr }}"{% endif %}
+                {% if carousel_id is defined %} id="{{ carousel_id|esc_attr }}"{% endif %}>
+
+            {% block before_slides %}{% endblock %}
+            {% set carousel_attrs = carousel_attrs|add('class', 'swiper-slide') %}
+            <div class="swiper-wrapper {{ wrapper_class|esc_attr }}">
+                {% for key, carousel in carousels %}
+                    {% if carousel.attrs is defined and carousel.attrs is not empty  %}
+                        {% set carousel_attrs = carousel_attrs|add(carousel.attrs) %}
+                    {% endif %}
+                    <div {{ carousel_attrs|parse_attrs|raw }}>
+                        {% block carousel %}{% endblock %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% block after_slides %}{% endblock %}
+        </div>
+
+        {% if carousel_config.navigation is not defined
+            or carousel_config.navigation %}
+            {% block carousel_arrow %}
+                {% include get_template('arrows', _self) with {
+                    btn_class: arrow_class,
+                    class: arrows_class,
+                    icon: arrow_icon,
+                } %}
+            {% endblock %}
+        {% endif %}
+    </div>
+{% endif %}

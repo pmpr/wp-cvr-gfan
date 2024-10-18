@@ -1,7 +1,7 @@
 {% set id = get_id(post) %}
 {% set permalink = get_permalink(id) %}
 
-<article {{ add_animation({class: 'post-item mb-8 rounded-xxl border overflow-hidden', delay: 0, effect: 'fadeIn'}) }}>
+<article {{ add_animation({class: 'post-item mb-8 rounded-xxl overflow-hidden border overflow-hidden', delay: 0, effect: 'fadeIn'}) }}>
     <div class="row no-gutters">
         <div class="col-12 col-lg-5 mn-h366px post-thumb center-cover"
              style="background-image: url({{ get_the_post_thumbnail_url(id, 'medium')|esc_url }})"></div>

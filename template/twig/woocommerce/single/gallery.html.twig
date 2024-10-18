@@ -1,15 +1,18 @@
 {% if main_images and thumbnails %}
 
-    {% embed get_cover_template('common/carousel/carousel') with {
+    {% embed get_cover_template('common/carousel/swiper/carousel') with {
         carousel_config: {
-            fade: false,
-            arrows: false,
-            asNavFor: '.nav-thumbnail-slider',
-            slidesToShow: 1,
-            slidesToScroll: 1,
+            loop: true,
+            thumbs: '.product-gallery-thumb-carousel',
+            navigation: true,
+            pagination: false,
+            slidesPerView: 1
         },
+        arrow_icon: 'arrow',
+        arrow_class: 'position-absolute',
+        arrows_class: 'position-absolute top-50 w-100 show-element',
         carousels: main_images,
-        carousel_class: 'main-image-slider rounded-xxl border overflow-hidden'
+        container_class: 'main-carousel product-gallery-main-carousel rounded-xxl overflow-hidden mb-3',
     } %}
 
         {% block carousel %}
@@ -17,33 +20,27 @@
         {% endblock %}
     {% endembed %}
 
-    <div class="carousel-container mt-5">
 
-        {% set slidesToShow = 4 %}
-        {% set arrows = thumbnails|length > slidesToShow %}
-        {% embed get_cover_template('common/carousel/carousel') with {
-            carousel_config: {
-                dots: false,
-                arrows: arrows,
-                asNavFor: '.main-image-slider',
-                slidesToShow: slidesToShow,
-                slidesToScroll: 1,
-                focusOnSelect: true,
-            },
-            carousels: thumbnails,
-            arrow_icon: 'arrow',
-            arrow_class: 'position-absolute',
-            arrows_class: 'position-absolute top-30 w-100 show-element',
-            carousel_class: 'nav-thumbnail-slider',
-            next_class: 'right-0',
-            prev_class: 'left-0',
-        } %}
+    {% set slidesToShow = 5 %}
+    {% set arrows = thumbnails|length > slidesToShow %}
+    {% embed get_cover_template('common/carousel/swiper/carousel') with {
+        carousel_config: {
+            main: false,
+            navigation: false,
+            pagination: false,
+            slidesPerView: slidesToShow,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true
+        },
+        carousels: thumbnails,
+        next_class: 'right-0',
+        prev_class: 'left-0',
+        container_class: 'overflow-hidden thumb-carousel product-gallery-thumb-carousel'
+    } %}
 
-            {% block carousel %}
-                {{ carousel|raw }}
-            {% endblock %}
-        {% endembed %}
-
-    </div>
+        {% block carousel %}
+            {{ carousel|raw }}
+        {% endblock %}
+    {% endembed %}
 
 {% endif %}

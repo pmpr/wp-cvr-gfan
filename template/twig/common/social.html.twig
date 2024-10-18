@@ -1,9 +1,7 @@
-{% if text %}
-    <h6 class="my-auto mr-1 text-dark">{{ text|raw }}</h6>
-{% endif %}
+{{ render_if_has_content('h6', {class: 'my-auto mr-1 text-dark'}, text) }}
 {% if socials %}
     {% for social in socials %}
-        <a href="{{ social.url|raw }}" class="ml-2" rel="noopener noreferrer nofollow">
+        <a href="{{ social.url|raw }}" class="my-auto ml-2" rel="noopener noreferrer nofollow">
             {{ render_icon(social.icon, {class: 'icon-' ~ icon_size|default('lg') ~ ' icon-primary media-hover-move up'}) }}
         </a>
     {% endfor %}

@@ -3,18 +3,16 @@
         <div class="container">
             <div class="position-relative d-flex justify-content-between">
                 <div class="d-block d-lg-none centered-absolute t-n50-0 left-0">
-                    <a href="#" class="mobile-aside-open">
-                        {{ render_icon('fasm/6/set/bars', {class: 'icon-lg icon-dark'}) }}
-                    </a>
+                    <span class="mobile-aside-open">{{ render_icon('fasm/6/set/bars', {class: 'icon-lg icon-dark'}) }}</span>
                 </div>
                 <div class="logo ml-10 d-block d-lg-none">
                     {% include get_template('../common/logo', _self) with {
-                        width: 78,
-                        height: 60,
-                        logo_type: 'header'
+                        width: 70,
+                        height: 70,
+                        logo_type: 'square'
                     } %}
                 </div>
-                <div class="d-block d-lg-none centered-absolute t-n50-0 right-0">
+                <div class="d-block d-lg-none my-auto right-0">
                     {{ do_action('gfan_header_middle_right') }}
                 </div>
                 <div class="header-nav d-none d-lg-flex">
@@ -32,9 +30,19 @@
                 </div>
 
                 {% set phone = pmpr_apply_filters('get_contact_information_by_key', {}, get_cover_option('header_contact_us')) %}
-                {% if phone %}
-                    <div class="d-none d-lg-block">
-                        {% include get_template('../common/information', _self) with {info: phone} %}
+                {% set socials = pmpr_apply_filters('contact_get_socials', {}, {include: get_cover_option('header_socials'), output: ''}) %}
+                {% if phone or socials %}
+                    <div class="d-flex">
+                        {% if phone %}
+                            <div class="d-none d-lg-block">
+                                {% include get_cover_template('common/information') with {info: phone} %}
+                            </div>
+                        {% endif %}
+                        {% if socials %}
+                            <div class="d-none d-lg-flex justify-content-center justify-content-md-end">
+                                {% include get_cover_template('common/social') with {socials: socials} %}
+                            </div>
+                        {% endif %}
                     </div>
                 {% endif %}
             </div>

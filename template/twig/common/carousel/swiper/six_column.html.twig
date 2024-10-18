@@ -1,0 +1,30 @@
+{% set arrows_class = '' %}
+{% set arrow_icon = 'arrow' %}
+{% set carousel_config = {
+    loop: carousels|length > 10,
+    speed: 1500,
+    autoplay: {
+        delay: 8000,
+        pauseOnMouseEnter: true,
+        disableOnInteraction: true
+    },
+    pagination: false,
+    slidesPerView: 2,
+    centeredSlides: false,
+    breakpoints: {
+        1200: {
+            slidesPerView: 5,
+        },
+        1000: {
+            slidesPerView: 4,
+        },
+        800: {
+            slidesPerView: 3,
+        },
+        768: {
+            slidesPerView: 2,
+        }
+    },
+} %}
+{% extends get_template('carousel', _self) %}
+

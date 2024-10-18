@@ -4,27 +4,27 @@
     {% set slides = get_cover_option('home_top_slider', {}) %}
     {% if slides %}
         <section class="home-slider mb-8 carousel-container">
-            {% embed get_template('../common/carousel/carousel', _self) with {
+            {% embed get_cover_template('common/carousel/swiper/carousel') with {
                 carousels: slides,
                 arrow_class: 'position-absolute',
                 arrows_class: 'centered-absolute w-100 show-element d-none d-md-block',
-                carousel_class: 'full-width',
-                container_class: 'h-540px mx-md-h350px overflow-hidden',
+                carousel_attrs: {
+                    class: 'full-width'
+                },
+                container_class: 'frontend-carousel overflow-hidden',
                 carousel_config: {
-                    fade: true,
                     loop: true,
-                    dots: false,
-                    arrows: true,
-                    autoplay: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
+                    speed: 1500,
+                    autoplay: {
+                        delay: 8000
+                    },
+                    pagination: false,
                 }
-
             } %}
                 {% block carousel %}
-                    {% embed get_template('../common/background_media', _self) with {
-                        image_url: wp_get_attachment_image_url(carousel.image),
-                        container_class: 'carousel-item-wrapper h-540px mx-md-h350px position-relative',
+                    {% embed get_cover_template('common/background_media') with {
+                        attachment: carousel.image,
+                        container_class: 'carousel-item-wrapper position-relative',
                     } %}
                         {% block body %}
                             <div class="carousel-item-content position-absolute bottom-0 w-100 bg-overlay dark-50">
@@ -39,7 +39,7 @@
                                         {% if carousel.action_text %}
                                             <div class="col-12 col-lg-3 my-auto">
                                                 <div class="d-flex justify-content-center justify-content-lg-end">
-                                                    {% include get_template('../common/call_to_action', _self) with {
+                                                    {% include get_cover_template('common/call_to_action') with {
                                                         text: carousel.action_text,
                                                         permalink: carousel.action_permalink,
                                                     } %}
@@ -62,19 +62,19 @@
             <div class="container">
                 <div class="section-title mb-8 d-flex justify-content-between position-relative">
                     <h2 class="h3">{{ get_cover_option('home_slider_cats_title', '')|raw }}</h2>
-                    {% include get_template('../common/carousel/arrows', _self) with {
+                    {% include get_cover_template('common/carousel/swiper/arrows') with {
                         icon: 'arrow',
                         class: 'd-flex',
                         btn_class: 'mr-3'
                     } %}
                 </div>
-                {% embed get_template('../common/carousel/six_column', _self) with {
+                {% embed get_cover_template('common/carousel/swiper/six_column') with {
                     carousels: categories,
-                    carousel_class: 'mx-n3'
+                    container_class: 'overflow-hidden'
                 } %}
                     {% block carousel %}
                         <div {{ add_animation({class: 'px-3 position-relative', delay: loop.index * 0.1}) }}>
-                            {% embed get_template('../common/background_media', _self) with {
+                            {% embed get_cover_template('common/background_media') with {
                                 attachment: carousel.image,
                                 bg_image_size: 'thumbnail',
                                 container_class: 'rounded-xl category-bg overflow-hidden border border-white border-hover-light-primary'
@@ -89,14 +89,6 @@
                                     </a>
                                 {% endblock %}
                             {% endembed %}
-
-{#                            <a href="{{ carousel.permalink }}" style="background-image: url('{{ carousel.image|esc_url }}')"#}
-{#                               class="bg-hover-white d-flex flex-column bg-gray-100 rounded-xl px-4 py-6 border border-white border-hover-light-primary">#}
-{#                                <figure class="img-hover-scale overflow-hidden mx-auto mr-4">#}
-{#                                    {{ wp_get_attachment_image(carousel.image, 'mini')|raw }}#}
-{#                                </figure>#}
-{#                                <h3 class="h5 mx-auto">{{ carousel.title|raw }}</h3>#}
-{#                            </a>#}
                         </div>
                     {% endblock %}
                     {% block carousel_arrow %}{% endblock %}
@@ -110,7 +102,7 @@
         <section class="catalog py-8">
             <div class="container">
                 <div {{ add_animation({class: 'position-relative'}) }}>
-                    {% embed get_template('../common/background_media', _self) with {
+                    {% embed get_cover_template('common/background_media') with {
                         attachment: catalog.background,
                         container_class: 'card rounded-20x border-0 overflow-hidden'
                     } %}
@@ -118,7 +110,7 @@
                             <div class="card-body p-8 p-md-20">
                                 <div class="row">
                                     <div class="col-12 col-lg-6">
-                                        {% include get_template('../common/block_media', _self) with {
+                                        {% include get_cover_template('common/block_media') with {
                                             image_size: 'medium',
                                             image_attrs: {class: 'mx-auto mx-lg-auto mb-7 mb-lg-0 d-block'},
                                             video_attrs: {class: 'img-fluid pr-0 pr-lg-6'},
@@ -132,7 +124,7 @@
                                         <div class="d-flex flex-column flex-md-row">
 
                                             {% for button in catalog.buttons %}
-                                                {% include get_template('../common/call_to_action', _self) with {
+                                                {% include get_cover_template('common/call_to_action') with {
                                                     icon_left: 1,
                                                     media_hover: 0,
                                                     icon: button.icon,
@@ -158,23 +150,24 @@
             <div class="container">
                 <div class="section-title mb-8 d-flex justify-content-between position-relative">
                     <h2 class="h3">{{ products.title|raw }}</h2>
-                    {% include get_template('../common/carousel/arrows', _self) with {
+                    {% include get_cover_template('common/carousel/swiper/arrows') with {
                         icon: 'arrow',
                         class: 'd-flex',
                         btn_class: 'mr-3'
                     } %}
                 </div>
-                {% embed get_template('../common/carousel/four_column', _self) with {
+                {% embed get_cover_template('common/carousel/swiper/four_column') with {
                     carousels: products.items,
-                    carousel_class: 'mx-n3 same-height'
+                    container_class: 'overflow-hidden',
+                    carousel_attrs: {
+                        class: 'same-height same-width'
+                    }
                 } %}
                     {% block carousel %}
                         <div {{ add_animation({class: 'position-relative', delay: 0.2, effect: 'fadeIn'}) }}>
-                            <div class="mx-3 mb-4">
-                                {% include get_template("../common/article/product", _self) with {
-                                    product: carousel
-                                } %}
-                            </div>
+                            {% include get_cover_template("common/article/product") with {
+                                product: carousel
+                            } %}
                         </div>
                     {% endblock %}
                     {% block carousel_arrow %}{% endblock %}
@@ -183,7 +176,7 @@
         </section>
     {% endif %}
 
-    {% include get_template('../common/featured', _self) with {
+    {% include get_cover_template('common/featured') with {
         featured: get_cover_option('featured_product', {}),
         image_order: 3
     } %}
@@ -197,14 +190,14 @@
                         <h2 class="mb-4 text-center">{{ about.title|raw }}</h2>
                         <div class="text-center fs-lg">{{ wpautop(about.text)|raw }}</div>
                         <div class="text-center mt-7">
-                            {% include get_template('../common/call_to_action', _self) with {
+                            {% include get_cover_template('common/call_to_action') with {
                                 text: about.button,
                                 permalink: about.permalink
                             } %}
                         </div>
                     </div>
                     <div class="order-0 col-12 col-lg-6 col-xl-5 mb-6 mb-lg-0">
-                        {% include get_template('../common/block_media', _self) with {
+                        {% include get_cover_template('common/block_media') with {
                             image_size: 'medium_large',
                             video_attrs: {class: 'img-fluid pr-0 pr-lg-6'},
                             attachment: about.image,
@@ -216,7 +209,7 @@
     {% endif %}
 
 
-    {% include get_template('../common/featured', _self) with {
+    {% include get_cover_template('common/featured') with {
         featured: get_cover_option('featured_category', {}),
         image_order: 3
     } %}
@@ -228,11 +221,13 @@
                 <div {{ add_animation({class: 'row justify-content-center'}) }}>
                     <div class="col-12 col-lg-10 col-xl-8">
                         <h2 class="h3 text-center">{{ comments.title|raw }}</h2>
-                        {% embed get_template('../common/carousel/single_column', _self) with {
+                        {% embed get_cover_template('common/carousel/swiper/single_column') with {
                             carousels: comments.items,
                             arrow_class: 'position-absolute',
                             arrows_class: 'centered-absolute w-100 d-none d-lg-block',
-                            carousel_class: 'my-5'
+                            carousel_attrs: {
+                                class: 'my-5'
+                            }
                         } %}
                             {% block carousel %}
                                 <div class="text-center py-5">
