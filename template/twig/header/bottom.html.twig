@@ -12,9 +12,6 @@
                         logo_type: 'square'
                     } %}
                 </div>
-                <div class="d-block d-lg-none my-auto right-0">
-                    {{ do_action('gfan_header_middle_right') }}
-                </div>
                 <div class="header-nav d-none d-lg-flex">
                     {% include get_template('category_browser', _self) %}
                     {% if has_nav_menu('main-menu') %}
@@ -45,6 +42,10 @@
                         {% endif %}
                     </div>
                 {% endif %}
+
+                <div class="d-block d-lg-none my-auto right-0">
+                    {{ do_action('gfan_header_middle_right') }}
+                </div>
             </div>
         </div>
     </div>
