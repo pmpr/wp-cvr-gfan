@@ -1,7 +1,7 @@
 <?php
 /*   _______________________________________
     |  Obfuscated by PMPR - Php Obfuscator  |
-    |             6800f86561607             |
+    |             694c4d375f02d             |
     |_______________________________________|
 */
  namespace Pmpr\Cover\Gfan\Widget; use Pmpr\Common\Foundation\Interfaces\Constants; use Pmpr\Common\Foundation\Widget; class Company extends Widget { const kwmkawqoiesweswy = 'vat_number'; const kosymqioioyguigs = 'company_number'; public function __construct() { parent::__construct(__('Company Information', PR__CVR__GFAN), __('Display vat and company number.', PR__CVR__GFAN)); } public function ykwqaukkycogooii() { $uuyucgkyusckoaeq = $this->caokeucsksukesyo()->wmkogisswkckmeua(); $this->mkksewyosgeumwsa($uuyucgkyusckoaeq->ymuegqgyuagyucws(self::kosymqioioyguigs)->gswweykyogmsyawy(__('Company Number', PR__CVR__GFAN)))->mkksewyosgeumwsa($uuyucgkyusckoaeq->ymuegqgyuagyucws(self::kwmkawqoiesweswy)->gswweykyogmsyawy(__('Vat Number', PR__CVR__GFAN))); } public function gayqqwwuycceosii($ywmkwiwkosakssii = [], $owgumcsyqsamiemg = []) : array { $gkyciwoiiisgywcs = $this->caokeucsksukesyo()->ywqgcuymeiswqyqc(); $owgumcsyqsamiemg[Constants::qwumqqyuasyskkkc] = [[Constants::qescuiwgsyuikume => __('Company Number', PR__CVR__GFAN), Constants::ciyoccqkiamemcmm => $gkyciwoiiisgywcs->get($owgumcsyqsamiemg, self::kosymqioioyguigs)], [Constants::qescuiwgsyuikume => __('Vat Number', PR__CVR__GFAN), Constants::ciyoccqkiamemcmm => $gkyciwoiiisgywcs->get($owgumcsyqsamiemg, self::kwmkawqoiesweswy)]]; return parent::gayqqwwuycceosii($ywmkwiwkosakssii, $owgumcsyqsamiemg); } }

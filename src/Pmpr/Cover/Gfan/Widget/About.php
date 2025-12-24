@@ -1,7 +1,7 @@
 <?php
 /*   _______________________________________
     |  Obfuscated by PMPR - Php Obfuscator  |
-    |             6800f86561607             |
+    |             694c4d375f02d             |
     |_______________________________________|
 */
  namespace Pmpr\Cover\Gfan\Widget; use Pmpr\Common\Foundation\Interfaces\Constants; use Pmpr\Common\Foundation\Widget; class About extends Widget { const koiaaeoemsuwycmo = 'show_logo'; const fkcsamiuuakkgyas = 'logo_width'; const micqmkkciimooyym = 'logo_height'; public function __construct() { parent::__construct(__('About US (Custom of GFAN)', PR__CVR__GFAN), __('Display the information about your site or business.', PR__CVR__GFAN)); } public function ykwqaukkycogooii() { $uuyucgkyusckoaeq = $this->caokeucsksukesyo()->wmkogisswkckmeua(); $this->mkksewyosgeumwsa($uuyucgkyusckoaeq->wcwmusaouiqaqeww(self::koiaaeoemsuwycmo)->gswweykyogmsyawy(__('Show Logo', PR__CVR__GFAN)))->mkksewyosgeumwsa($uuyucgkyusckoaeq->ymuegqgyuagyucws(self::fkcsamiuuakkgyas)->gswweykyogmsyawy(__('Logo Width', PR__CVR__GFAN))->escqqisecooswqgo())->mkksewyosgeumwsa($uuyucgkyusckoaeq->ymuegqgyuagyucws(self::micqmkkciimooyym)->gswweykyogmsyawy(__('Logo Height', PR__CVR__GFAN))->escqqisecooswqgo())->mkksewyosgeumwsa($uuyucgkyusckoaeq->uouyygwcgsmygaee(Constants::TEXT)->gswweykyogmsyawy(__('Text under logo', PR__CVR__GFAN))->eyygsasuqmommkua($this->uwkmaywceaaaigwo()->giiuwsmyumqwwiyq()->ciqkaakiwsgqwiqu(Constants::eqkeooqcsscoggia))->qsecygiycssgacqs(3)); } }

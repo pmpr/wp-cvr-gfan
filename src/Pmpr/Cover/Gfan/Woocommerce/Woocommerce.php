@@ -1,7 +1,7 @@
 <?php
 /*   _______________________________________
     |  Obfuscated by PMPR - Php Obfuscator  |
-    |             6800f86561607             |
+    |             694c4d375f02d             |
     |_______________________________________|
 */
  namespace Pmpr\Cover\Gfan\Woocommerce; use Pmpr\Cover\Gfan\Container; class Woocommerce extends Container { public function wigskegsqequoeks() { $this->qcsmikeggeemccuu('wp', [$this, 'gosmqcmmomkqwmis'])->qcsmikeggeemccuu('init', [$this, 'init']); parent::wigskegsqequoeks(); } public function kgquecmsgcouyaya() { $this->cecaguuoecmccuse('amp_has_amp', [$this, 'wgeiomauqwicqiuu']); parent::kgquecmsgcouyaya(); } public function init() { Cart::symcgieuakksimmu(); Base::symcgieuakksimmu(); Order::symcgieuakksimmu(); Media::symcgieuakksimmu(); Account::symcgieuakksimmu(); Checkout::symcgieuakksimmu(); } public function gosmqcmmomkqwmis() { Loop::symcgieuakksimmu(); Header::symcgieuakksimmu(); if ($this->caokeucsksukesyo()->aqasygcsqysmmyke()->omuogooguicuqewu()) { Shop::symcgieuakksimmu(); } if ($this->uwkmaywceaaaigwo()->aqasygcsqysmmyke()->kmymkocwcawgeccm()) { Single::symcgieuakksimmu(); } $cgceoyqmmwumqyqa = $this->uwkmaywceaaaigwo()->wikusamwomuogoau(); if ($cgceoyqmmwumqyqa->wmqwkwyuqwksiiqk() || $cgceoyqmmwumqyqa->gqoskmoekogyqwsc() || $cgceoyqmmwumqyqa->ckeyeaouokcgeqeq()) { $this->caokeucsksukesyo()->eiwcuqigayigimak()->wwckmeoskuagomki('PR_OPTIMIZATION_DONT_OPTIMIZE', 1); } } public function wgeiomauqwicqiuu($umuecysoywoumgwo) : bool { $cgceoyqmmwumqyqa = $this->uwkmaywceaaaigwo()->wikusamwomuogoau(); return $umuecysoywoumgwo && !$cgceoyqmmwumqyqa->wwgwoqsqqmseioea() && !$cgceoyqmmwumqyqa->ckeyeaouokcgeqeq(); } }
